@@ -33,6 +33,8 @@ public class Map {
         ise.setExit("south", outside);
 
         currentLocation = outside;
+
+        locations = new Location[]{outside, theatre, pub, lab, office, ise};
     }
 
     public static Location getCurrentLocation() {
