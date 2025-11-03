@@ -3,16 +3,12 @@ package src.main.java.com.sokuba_studios.alpha.locations;
 import java.util.HashMap;
 
 public class Location {
-    private String description;
+    private final String description;
     private java.util.Map<String, Location> exits; // Map direction to neighboring Room
 
     public Location(String description) {
         this.description = description;
         exits = new HashMap<>();
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public void setExit(String direction, Location neighbor) {
