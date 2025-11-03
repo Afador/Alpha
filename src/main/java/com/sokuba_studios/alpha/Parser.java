@@ -6,17 +6,17 @@ import src.main.java.com.sokuba_studios.alpha.commands.CommandWords;
 import java.util.Scanner;
 
 public class Parser {
-    private CommandWords commands;
-    private Scanner reader;
+    private final CommandWords COMMANDS;
+    private final Scanner READER;
 
     public Parser() {
-        commands = new CommandWords();
-        reader = new Scanner(System.in);
+        COMMANDS = new CommandWords();
+        READER = new Scanner(System.in);
     }
 
     public Command getCommand() {
         System.out.print("> ");
-        String inputLine = reader.nextLine();
+        String inputLine = READER.nextLine();
 
         String word1 = null;
         String word2 = null;
@@ -29,7 +29,7 @@ public class Parser {
             }
         }
 
-        if (commands.isCommand(word1)) {
+        if (COMMANDS.isCommand(word1)) {
             return new Command(word1, word2);
         } else {
             return new Command(null, word2);
@@ -37,6 +37,6 @@ public class Parser {
     }
 
     public void showCommands() {
-        commands.showAll();
+        COMMANDS.showAll();
     }
 }
