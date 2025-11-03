@@ -16,7 +16,7 @@ public class AlphaMain {
 
     public AlphaMain() {
         Map.initialiseLocations();
-        player = new Character("player", Map.getCurrentLocation());
+        player = new Character(Map.getCurrentLocation());
         commandProcesser = new CommandProcesser(player);
     }
 
