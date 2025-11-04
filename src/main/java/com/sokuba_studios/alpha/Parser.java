@@ -6,7 +6,6 @@ import src.main.java.com.sokuba_studios.alpha.commands.CommandWords;
 import java.util.Scanner;
 
 public class Parser {
-    private static final CommandWords COMMANDS = new CommandWords();
     private static final Scanner READER = new Scanner(System.in);
 
     public static Command getCommand() {
@@ -24,7 +23,7 @@ public class Parser {
             }
         }
 
-        if (COMMANDS.isCommand(word1)) {
+        if (CommandWords.isCommand(word1)) {
             return new Command(word1, word2);
         } else {
             return new Command(null, word2);
@@ -32,6 +31,6 @@ public class Parser {
     }
 
     public static void showCommands() {
-        COMMANDS.showAll();
+        CommandWords.showAll();
     }
 }

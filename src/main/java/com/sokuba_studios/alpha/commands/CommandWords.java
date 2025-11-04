@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CommandWords {
-    private Map<String, String> validCommands;
+    private static final Map<String, String> validCommands = new HashMap<>();
 
-    public CommandWords() {
-        validCommands = new HashMap<>();
+    static {
         validCommands.put("go", "Move to another room");
         validCommands.put("quit", "End the game");
         validCommands.put("help", "Show help");
@@ -16,11 +15,11 @@ public class CommandWords {
         validCommands.put("teleport", "Teleport to another room");
     }
 
-    public boolean isCommand(String commandWord) {
+    public static boolean isCommand(String commandWord) {
         return validCommands.containsKey(commandWord);
     }
 
-    public void showAll() {
+    public static void showAll() {
         System.out.print("Valid commands are: ");
         for (String command : validCommands.keySet()) {
             System.out.print(command + " ");
