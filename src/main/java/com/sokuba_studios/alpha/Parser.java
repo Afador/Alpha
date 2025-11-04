@@ -6,15 +6,10 @@ import src.main.java.com.sokuba_studios.alpha.commands.CommandWords;
 import java.util.Scanner;
 
 public class Parser {
-    private final CommandWords COMMANDS;
-    private final Scanner READER;
+    private static final CommandWords COMMANDS = new CommandWords();
+    private static final Scanner READER = new Scanner(System.in);
 
-    public Parser() {
-        COMMANDS = new CommandWords();
-        READER = new Scanner(System.in);
-    }
-
-    public Command getCommand() {
+    public static Command getCommand() {
         System.out.print("> ");
         String inputLine = READER.nextLine();
 
@@ -36,7 +31,7 @@ public class Parser {
         }
     }
 
-    public void showCommands() {
+    public static void showCommands() {
         COMMANDS.showAll();
     }
 }
