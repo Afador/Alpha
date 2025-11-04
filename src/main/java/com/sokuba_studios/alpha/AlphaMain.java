@@ -1,7 +1,5 @@
 package src.main.java.com.sokuba_studios.alpha;
 
-import src.main.java.com.sokuba_studios.alpha.commands.Command;
-import src.main.java.com.sokuba_studios.alpha.commands.CommandProcesser;
 import src.main.java.com.sokuba_studios.alpha.commands.Parser;
 import src.main.java.com.sokuba_studios.alpha.locations.Map;
 
@@ -22,8 +20,7 @@ public class AlphaMain {
 
         boolean finished = false;
         while (!finished) {
-            Command command = Parser.getCommand();
-            finished = CommandProcesser.processCommand(command);
+            finished = Parser.getCommand();
         }
         System.out.println("Thank you for playing. Goodbye.");
     }

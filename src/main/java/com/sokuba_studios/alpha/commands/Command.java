@@ -1,23 +1,23 @@
 package src.main.java.com.sokuba_studios.alpha.commands;
 
 public class Command {
-    private final String COMMAND;
-    private final String ARGUMENT;
+    private static String key;
+    private static String argument;
 
-    public Command(String firstWord, String secondWord) {
-        this.COMMAND = firstWord;
-        this.ARGUMENT = secondWord;
+    public static void setCommand(String inKey, String inArgument) {
+        key = inKey;
+        argument = inArgument;
     }
 
-    public String getCOMMAND() {
-        return COMMAND;
+    public static String getKey() {
+        return key;
     }
 
-    public String getARGUMENT() {
-        return ARGUMENT;
+    public static String getArgument() {
+        return argument;
     }
 
-    public boolean hasSecondWord() {
-        return ARGUMENT != null;
+    public static boolean hasSecondWord() {
+        return argument != null;
     }
 }

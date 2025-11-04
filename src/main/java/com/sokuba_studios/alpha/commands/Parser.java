@@ -17,25 +17,26 @@ public class Parser {
         validCommands.put("teleport", "Teleport to another room");
     }
 
-    public static Command getCommand() {
+    public static boolean getCommand() {
         System.out.print("> ");
         String inputLine = READER.nextLine();
 
-        String word1 = null;
-        String word2 = null;
+        String token1 = null;
+        String token2 = null;
 
         Scanner tokenizer = new Scanner(inputLine);
         if (tokenizer.hasNext()) {
-            word1 = tokenizer.next();
+            token1 = tokenizer.next();
             if (tokenizer.hasNext()) {
-                word2 = tokenizer.next();
+                token2 = tokenizer.next();
             }
         }
 
-        if (isCommand(word1)) {
-            return new Command(word1, word2);
+        Command.setCommand(token1, token2);
+        if (isCommand(token1)) {
+            return CommandProcesser.processCommand();
         } else {
-            return new Command(null, word2);
+            return CommandProcesser.processCommand();
         }
     }
 

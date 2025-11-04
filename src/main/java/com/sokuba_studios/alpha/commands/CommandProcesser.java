@@ -4,8 +4,8 @@ import src.main.java.com.sokuba_studios.alpha.Character;
 import src.main.java.com.sokuba_studios.alpha.locations.Location;
 
 public class CommandProcesser {
-    public static boolean processCommand(Command command) {
-        String commandWord = command.getCOMMAND();
+    public static boolean processCommand() {
+        String commandWord = Command.getKey();
 
         if (commandWord == null) {
             System.out.println("I don't understand your command...");
@@ -17,10 +17,10 @@ public class CommandProcesser {
                 printHelp();
                 break;
             case "go":
-                goRoom(command);
+                goRoom();
                 break;
             case "quit":
-                if (command.hasSecondWord()) {
+                if (Command.hasSecondWord()) {
                     System.out.println("Quit what?");
                     return false;
                 } else {
@@ -39,13 +39,13 @@ public class CommandProcesser {
         Parser.showCommands();
     }
 
-    private static void goRoom(Command command) {
-        if (!command.hasSecondWord()) {
+    private static void goRoom() {
+        if (!Command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
 
-        String direction = command.getARGUMENT();
+        String direction = Command.getArgument();
 
         Location nextLocation = Character.getCurrentRoom().getExit(direction);
 
