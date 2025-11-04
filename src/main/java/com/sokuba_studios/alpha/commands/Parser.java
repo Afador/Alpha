@@ -9,45 +9,44 @@ import java.util.Scanner;
 
 public class Parser {
     private static final Scanner READER = new Scanner(System.in);
-    private static final Map<String, String> validCommands = new HashMap<>();
+    private static final Map<String, String> COMMANDS = new HashMap<>();
+
+    private static String key;
+    private static String argument;
 
     static {
-        validCommands.put("go", "Move to another room");
-        validCommands.put("quit", "End the game");
-        validCommands.put("help", "Show help");
-        validCommands.put("look", "Look around");
-        validCommands.put("eat", "Eat something");
-        validCommands.put("teleport", "Teleport to another room");
+        COMMANDS.put("go", "Move to another room");
+        COMMANDS.put("quit", "End the game");
+        COMMANDS.put("help", "Show help");
+        COMMANDS.put("look", "Look around");
+        COMMANDS.put("eat", "Eat something");
+        COMMANDS.put("teleport", "Teleport to another room");
     }
 
     public static boolean getCommand() {
         System.out.print(">");
         String inputLine = READER.nextLine();
 
-        String token1 = null;
-        String token2 = null;
+        key = null;
+        argument = null;
 
         Scanner tokenizer = new Scanner(inputLine);
         if (tokenizer.hasNext()) {
-            token1 = tokenizer.next();
+            key = tokenizer.next();
             if (tokenizer.hasNext()) {
-                token2 = tokenizer.next();
+                argument = tokenizer.next();
             }
         }
-
-        Command.setCommand(token1, token2);
         return processCommand();
     }
 
     public static boolean processCommand() {
-        String commandWord = Command.getKey();
-
-        if (commandWord == null) {
+        if (key == null) {
             System.out.println("I don't understand your command...");
             return false;
         }
 
-        switch (commandWord) {
+        switch (key) {
             case "help":
                 printHelp();
                 break;
@@ -55,7 +54,7 @@ public class Parser {
                 goRoom();
                 break;
             case "quit":
-                if (Command.hasSecondWord()) {
+                if (argument != null) {
                     System.out.println("Quit what?");
                     return false;
                 } else {
@@ -70,7 +69,7 @@ public class Parser {
 
     public static void showCommands() {
         System.out.print("Valid commands are: ");
-        for (String command : validCommands.keySet()) {
+        for (String command : COMMANDS.keySet()) {
             System.out.print(command + " ");
         }
         System.out.println();
@@ -83,19 +82,17 @@ public class Parser {
     }
 
     private static void goRoom() {
-        if (!Command.hasSecondWord()) {
+        if (argument == null) {
             System.out.println("Go where?");
             return;
         }
 
-        String direction = Command.getArgument();
-
-        Location nextLocation = src.main.java.com.sokuba_studios.alpha.Character.getCurrentRoom().getExit(direction);
+        Location nextLocation = Character.getCurrentRoom().getExit(argument);
 
         if (nextLocation == null) {
             System.out.println("There is no door!");
         } else {
-            src.main.java.com.sokuba_studios.alpha.Character.setCurrentRoom(nextLocation);
+            Character.setCurrentRoom(nextLocation);
             System.out.println(Character.getCurrentRoom().getLongDescription());
         }
     }
