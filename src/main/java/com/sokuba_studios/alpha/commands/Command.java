@@ -17,10 +17,6 @@ public class Command {
         return ARGUMENT;
     }
 
-    public boolean isUnknown() {
-        return COMMAND == null;
-    }
-
     public boolean hasSecondWord() {
         return ARGUMENT != null;
     }
