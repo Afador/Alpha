@@ -1,27 +1,27 @@
 package src.main.java.com.sokuba_studios.alpha.commands;
 
 public class Command {
-    private final String commandWord;
-    private final String secondWord;
+    private final String COMMAND;
+    private final String ARGUMENT;
 
     public Command(String firstWord, String secondWord) {
-        this.commandWord = firstWord;
-        this.secondWord = secondWord;
+        this.COMMAND = firstWord;
+        this.ARGUMENT = secondWord;
     }
 
-    public String getCommandWord() {
-        return commandWord;
+    public String getCOMMAND() {
+        return COMMAND;
     }
 
-    public String getSecondWord() {
-        return secondWord;
+    public String getARGUMENT() {
+        return ARGUMENT;
     }
 
     public boolean isUnknown() {
-        return commandWord == null;
+        return COMMAND == null;
     }
 
     public boolean hasSecondWord() {
-        return secondWord != null;
+        return ARGUMENT != null;
     }
 }

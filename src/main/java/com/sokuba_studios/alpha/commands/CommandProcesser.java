@@ -5,15 +5,10 @@ import src.main.java.com.sokuba_studios.alpha.Parser;
 import src.main.java.com.sokuba_studios.alpha.locations.Location;
 
 public class CommandProcesser {
-    private final Parser parser = new Parser();
-    private final src.main.java.com.sokuba_studios.alpha.Character player;
+    private static final Parser parser = new Parser();
 
-    public CommandProcesser(Character inPlayer) {
-        player = inPlayer;
-    }
-
-    public boolean processCommand(Command command) {
-        String commandWord = command.getCommandWord();
+    public static boolean processCommand(Command command) {
+        String commandWord = command.getCOMMAND();
 
         if (commandWord == null) {
             System.out.println("I don't understand your command...");
@@ -41,27 +36,27 @@ public class CommandProcesser {
         return false;
     }
 
-    private void printHelp() {
+    private static void printHelp() {
         System.out.println("You are lost. You are alone. You wander around the university.");
         System.out.print("Your command words are: ");
         parser.showCommands();
     }
 
-    private void goRoom(Command command) {
+    private static void goRoom(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
 
-        String direction = command.getSecondWord();
+        String direction = command.getARGUMENT();
 
-        Location nextLocation = player.getCurrentRoom().getExit(direction);
+        Location nextLocation = Character.getCurrentRoom().getExit(direction);
 
         if (nextLocation == null) {
             System.out.println("There is no door!");
         } else {
-            player.setCurrentRoom(nextLocation);
-            System.out.println(player.getCurrentRoom().getLongDescription());
+            Character.setCurrentRoom(nextLocation);
+            System.out.println(Character.getCurrentRoom().getLongDescription());
         }
     }
 }

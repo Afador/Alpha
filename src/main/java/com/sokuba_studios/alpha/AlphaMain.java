@@ -6,8 +6,6 @@ import src.main.java.com.sokuba_studios.alpha.locations.Map;
 
 public class AlphaMain {
     private final Parser parser = new Parser();
-    private final Character player;
-    private final CommandProcesser commandProcesser;
 
     public static void main(String[] args) {
         AlphaMain game = new AlphaMain();
@@ -16,8 +14,7 @@ public class AlphaMain {
 
     public AlphaMain() {
         Map.initialiseLocations();
-        player = new Character(Map.getCurrentLocation());
-        commandProcesser = new CommandProcesser(player);
+        Character.setCurrentRoom(Map.getCurrentLocation());
     }
 
     public void play() {
@@ -26,7 +23,7 @@ public class AlphaMain {
         boolean finished = false;
         while (!finished) {
             Command command = parser.getCommand();
-            finished = commandProcesser.processCommand(command);
+            finished = CommandProcesser.processCommand(command);
         }
         System.out.println("Thank you for playing. Goodbye.");
     }
@@ -38,6 +35,6 @@ public class AlphaMain {
         System.out.println();
         System.out.println("Type 'help' if you need help.");
         System.out.println();
-        System.out.println(player.getCurrentRoom().getLongDescription());
+        System.out.println(Character.getCurrentRoom().getLongDescription());
     }
 }
