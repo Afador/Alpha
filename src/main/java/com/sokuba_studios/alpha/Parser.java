@@ -1,6 +1,5 @@
-package src.main.java.com.sokuba_studios.alpha.commands;
+package src.main.java.com.sokuba_studios.alpha;
 
-import src.main.java.com.sokuba_studios.alpha.Character;
 import src.main.java.com.sokuba_studios.alpha.locations.Location;
 
 import java.util.HashMap;

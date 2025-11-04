@@ -1,6 +1,5 @@
 package src.main.java.com.sokuba_studios.alpha;
 
-import src.main.java.com.sokuba_studios.alpha.commands.Parser;
 import src.main.java.com.sokuba_studios.alpha.locations.Map;
 
 public class AlphaMain {
@@ -29,8 +28,6 @@ public class AlphaMain {
         System.out.println();
         System.out.println("ALPHA");
         System.out.println("© 2025 Sokuba Studios");
-        System.out.println();
-        System.out.println("Type 'help' if you need help.");
         System.out.println();
         System.out.println(Character.getCurrentRoom().getLongDescription());
     }
