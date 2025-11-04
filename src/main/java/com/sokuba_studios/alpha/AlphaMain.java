@@ -2,6 +2,7 @@ package src.main.java.com.sokuba_studios.alpha;
 
 import src.main.java.com.sokuba_studios.alpha.commands.Command;
 import src.main.java.com.sokuba_studios.alpha.commands.CommandProcesser;
+import src.main.java.com.sokuba_studios.alpha.commands.Parser;
 import src.main.java.com.sokuba_studios.alpha.locations.Map;
 
 public class AlphaMain {

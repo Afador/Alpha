@@ -1,7 +1,6 @@
 package src.main.java.com.sokuba_studios.alpha.commands;
 
 import src.main.java.com.sokuba_studios.alpha.Character;
-import src.main.java.com.sokuba_studios.alpha.Parser;
 import src.main.java.com.sokuba_studios.alpha.locations.Location;
 
 public class CommandProcesser {
