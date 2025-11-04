@@ -5,7 +5,6 @@ import src.main.java.com.sokuba_studios.alpha.commands.CommandProcesser;
 import src.main.java.com.sokuba_studios.alpha.locations.Map;
 
 public class AlphaMain {
-    private final Parser parser = new Parser();
 
     public static void main(String[] args) {
         AlphaMain game = new AlphaMain();
@@ -22,7 +21,7 @@ public class AlphaMain {
 
         boolean finished = false;
         while (!finished) {
-            Command command = parser.getCommand();
+            Command command = Parser.getCommand();
             finished = CommandProcesser.processCommand(command);
         }
         System.out.println("Thank you for playing. Goodbye.");

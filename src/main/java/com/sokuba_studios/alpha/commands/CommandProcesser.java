@@ -5,8 +5,6 @@ import src.main.java.com.sokuba_studios.alpha.Parser;
 import src.main.java.com.sokuba_studios.alpha.locations.Location;
 
 public class CommandProcesser {
-    private static final Parser parser = new Parser();
-
     public static boolean processCommand(Command command) {
         String commandWord = command.getCOMMAND();
 
@@ -39,7 +37,7 @@ public class CommandProcesser {
     private static void printHelp() {
         System.out.println("You are lost. You are alone. You wander around the university.");
         System.out.print("Your command words are: ");
-        parser.showCommands();
+        Parser.showCommands();
     }
 
     private static void goRoom(Command command) {
