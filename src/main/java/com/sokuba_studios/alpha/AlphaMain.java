@@ -1,6 +1,7 @@
 package src.main.java.com.sokuba_studios.alpha;
 
-import src.main.java.com.sokuba_studios.alpha.locations.Map;
+import src.main.java.com.sokuba_studios.alpha.commands.Parser;
+import src.main.java.com.sokuba_studios.alpha.locations.LocationMap;
 
 public class AlphaMain {
 
@@ -10,8 +11,8 @@ public class AlphaMain {
     }
 
     public AlphaMain() {
-        Map.initialiseLocations();
-        Character.setCurrentRoom(Map.getCurrentLocation());
+        LocationMap.initialiseLocations();
+        Character.setCurrentRoom(LocationMap.getCurrentLocation());
     }
 
     public void play() {
@@ -26,9 +27,8 @@ public class AlphaMain {
 
     private void printWelcome() {
         System.out.println();
-        System.out.println("ALPHA");
+        System.out.println("Project Alpha");
         System.out.println("© 2025 Sokuba Studios");
         System.out.println();
-        System.out.println(Character.getCurrentRoom().getDescription());
     }
 }

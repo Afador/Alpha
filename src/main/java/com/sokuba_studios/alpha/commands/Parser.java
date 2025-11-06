@@ -1,6 +1,9 @@
-package src.main.java.com.sokuba_studios.alpha;
+package src.main.java.com.sokuba_studios.alpha.commands;
 
+import src.main.java.com.sokuba_studios.alpha.Character;
+import src.main.java.com.sokuba_studios.alpha.Item;
 import src.main.java.com.sokuba_studios.alpha.locations.Location;
+import src.main.java.com.sokuba_studios.alpha.locations.LocationMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -100,13 +103,13 @@ public class Parser {
             return;
         }
 
-        Location nextLocation = Character.getCurrentRoom().getExit(argument);
+        Location nextLocation = LocationMap.getCurrentLocation().getExit(argument);
 
         if (nextLocation == null) {
             System.out.println("There is no door!");
         } else {
-            Character.setCurrentRoom(nextLocation);
-            System.out.println(Character.getCurrentRoom().getDescription());
+            LocationMap.setCurrentLocation(nextLocation);
+            System.out.println(LocationMap.getCurrentLocation().getDescription());
         }
     }
 
@@ -116,13 +119,13 @@ public class Parser {
             return;
         }
 
-        Item item = Character.getCurrentRoom().getItem(argument);
+        Item item = LocationMap.getCurrentLocation().getItem(argument);
 
         if (item == null) {
             System.out.println("You cannot take nothing!");
         } else {
-            Character.addItem(argument, Character.getCurrentRoom().getItem(argument));
-            Character.getCurrentRoom().removeItem(argument);
+            Character.addItem(argument, LocationMap.getCurrentLocation().getItem(argument));
+            LocationMap.getCurrentLocation().removeItem(argument);
             System.out.println("You have taken a " + argument);
         }
     }
@@ -138,7 +141,7 @@ public class Parser {
         if (item == null) {
             System.out.println("You cannot drop nothing!");
         } else {
-            Character.getCurrentRoom().addItem(argument, item);
+            LocationMap.getCurrentLocation().addItem(argument, item);
             Character.removeItem(argument);
             System.out.println("You have dropped a " + argument);
         }
@@ -154,9 +157,7 @@ public class Parser {
     }
 
     private static void showRoom() {
-        System.out.println(Character.getCurrentRoom().getDescription());
-
-        Map<String, Item> ItemList = Character.getCurrentRoom().getItemList();
+        Map<String, Item> ItemList = LocationMap.getCurrentLocation().getItemList();
         for (String item : ItemList.keySet()) {
             System.out.print(item + " ");
         }

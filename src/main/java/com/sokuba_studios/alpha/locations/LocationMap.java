@@ -2,7 +2,7 @@ package src.main.java.com.sokuba_studios.alpha.locations;
 
 import src.main.java.com.sokuba_studios.alpha.Item;
 
-public class Map {
+public class LocationMap {
     private static Location[] locations;
     private static Location currentLocation;
 
@@ -44,5 +44,9 @@ public class Map {
 
     public static Location getCurrentLocation() {
         return currentLocation;
+    }
+
+    public static void setCurrentLocation(Location inCurrentLocation) {
+        currentLocation = inCurrentLocation;
     }
 }

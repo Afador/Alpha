@@ -11,7 +11,7 @@ public class Location {
     private final Map<String, Item> ITEMS;
     private final Map<String, Location> EXITS;
 
-    public Location(String inName, String inDescription) {
+    protected Location(String inName, String inDescription) {
         name = inName;
         description = inDescription;
         EXITS = new HashMap<>();
