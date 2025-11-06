@@ -32,6 +32,10 @@ public class Location {
         return ITEMS.get(name);
     }
 
+    public Map<String, Item> getItemList() {
+        return ITEMS;
+    }
+
     public void removeItem(String name) {
         ITEMS.remove(name);
     }

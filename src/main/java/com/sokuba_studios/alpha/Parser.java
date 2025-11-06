@@ -48,6 +48,9 @@ public class Parser {
         }
 
         switch (key) {
+            case "look":
+                showRoom();
+                break;
             case "help":
                 printHelp();
                 break;
@@ -144,6 +147,16 @@ public class Parser {
     private static void showInventory() {
         Map<String, Item> ItemList = Character.getItemList();
 
+        for (String item : ItemList.keySet()) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
+    }
+
+    private static void showRoom() {
+        System.out.println(Character.getCurrentRoom().getLongDescription());
+
+        Map<String, Item> ItemList = Character.getCurrentRoom().getItemList();
         for (String item : ItemList.keySet()) {
             System.out.print(item + " ");
         }
