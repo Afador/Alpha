@@ -29,6 +29,6 @@ public class AlphaMain {
         System.out.println("ALPHA");
         System.out.println("© 2025 Sokuba Studios");
         System.out.println();
-        System.out.println(Character.getCurrentRoom().getLongDescription());
+        System.out.println(Character.getCurrentRoom().getDescription());
     }
 }

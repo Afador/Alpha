@@ -6,26 +6,40 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Location {
-    private final String description;
-    private final Map<String, Location> EXITS; // Map direction to neighboring Room
+    private String name;
+    private String description;
     private final Map<String, Item> ITEMS;
+    private final Map<String, Location> EXITS;
 
-    public Location(String description) {
-        this.description = description;
+    public Location(String inName, String inDescription) {
+        name = inName;
+        description = inDescription;
         EXITS = new HashMap<>();
         ITEMS = new HashMap<>();
     }
 
-    public void setExit(String direction, Location neighbor) {
-        EXITS.put(direction, neighbor);
+    public String getName() {
+        return name;
     }
 
-    public Location getExit(String direction) {
-        return EXITS.get(direction);
+    public void setName(String inName) {
+        name = inName;
     }
 
-    public void setItem(String name, Item item) {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String inDescription) {
+        description = inDescription;
+    }
+
+    public void addItem(String name, Item item) {
         ITEMS.put(name, item);
+    }
+
+    public void removeItem(String name) {
+        ITEMS.remove(name);
     }
 
     public Item getItem(String name) {
@@ -36,19 +50,15 @@ public class Location {
         return ITEMS;
     }
 
-    public void removeItem(String name) {
-        ITEMS.remove(name);
+    public void addExit(String direction, Location neighbor) {
+        EXITS.put(direction, neighbor);
     }
 
-    public String getExitString() {
-        StringBuilder sb = new StringBuilder();
-        for (String direction : EXITS.keySet()) {
-            sb.append(direction).append(" ");
-        }
-        return sb.toString().trim();
+    public Location getExit(String direction) {
+        return EXITS.get(direction);
     }
 
-    public String getLongDescription() {
-        return "You are " + description + ".\nExits: " + getExitString();
+    public Map<String, Location> getExitList() {
+        return EXITS;
     }
 }

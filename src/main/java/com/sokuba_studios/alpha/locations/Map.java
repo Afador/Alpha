@@ -10,32 +10,32 @@ public class Map {
         Location outside, theatre, pub, lab, office, ise;
 
         // create rooms
-        outside = new Location("outside the main entrance of the university");
-        theatre = new Location("in a lecture theatre");
-        pub = new Location("in the campus pub");
-        lab = new Location("in a computing lab");
-        office = new Location("in the computing admin office");
-        ise = new Location("in a cool building that is yellow. It is ISE");
+        outside = new Location("outside","outside the main entrance of the university");
+        theatre = new Location("theatre", "in a lecture theatre");
+        pub = new Location("pub", "in the campus pub");
+        lab = new Location("lab", "in a computing lab");
+        office = new Location("office", "in the computing admin office");
+        ise = new Location("ise", "in a cool building that is yellow. It is ISE");
 
         // initialise room exits
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-        outside.setExit("north", ise);
+        outside.addExit("east", theatre);
+        outside.addExit("south", lab);
+        outside.addExit("west", pub);
+        outside.addExit("north", ise);
 
         Item shovel = new Item("It is a shovel");
-        outside.setItem("shovel", shovel);
+        outside.addItem("shovel", shovel);
 
-        theatre.setExit("west", outside);
+        theatre.addExit("west", outside);
 
-        pub.setExit("east", outside);
+        pub.addExit("east", outside);
 
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
+        lab.addExit("north", outside);
+        lab.addExit("east", office);
 
-        office.setExit("west", lab);
+        office.addExit("west", lab);
 
-        ise.setExit("south", outside);
+        ise.addExit("south", outside);
 
         currentLocation = outside;
 

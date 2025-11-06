@@ -106,7 +106,7 @@ public class Parser {
             System.out.println("There is no door!");
         } else {
             Character.setCurrentRoom(nextLocation);
-            System.out.println(Character.getCurrentRoom().getLongDescription());
+            System.out.println(Character.getCurrentRoom().getDescription());
         }
     }
 
@@ -138,7 +138,7 @@ public class Parser {
         if (item == null) {
             System.out.println("You cannot drop nothing!");
         } else {
-            Character.getCurrentRoom().setItem(argument, item);
+            Character.getCurrentRoom().addItem(argument, item);
             Character.removeItem(argument);
             System.out.println("You have dropped a " + argument);
         }
@@ -154,7 +154,7 @@ public class Parser {
     }
 
     private static void showRoom() {
-        System.out.println(Character.getCurrentRoom().getLongDescription());
+        System.out.println(Character.getCurrentRoom().getDescription());
 
         Map<String, Item> ItemList = Character.getCurrentRoom().getItemList();
         for (String item : ItemList.keySet()) {
