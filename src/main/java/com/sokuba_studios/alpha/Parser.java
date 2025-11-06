@@ -19,7 +19,9 @@ public class Parser {
         COMMANDS.put("help", "Show help");
         COMMANDS.put("look", "Look around");
         COMMANDS.put("eat", "Eat something");
-        COMMANDS.put("teleport", "Teleport to another room");
+        COMMANDS.put("take", "Pick up an item");
+        COMMANDS.put("drop", "Drop an item");
+        COMMANDS.put("inventory", "It is an inventory");
     }
 
     public static boolean getCommand() {
@@ -51,6 +53,15 @@ public class Parser {
                 break;
             case "go":
                 goRoom();
+                break;
+            case "take":
+                takeItem();
+                break;
+            case "drop":
+                dropItem();
+                break;
+            case "inventory":
+                showInventory();
                 break;
             case "quit":
                 if (argument != null) {
@@ -94,5 +105,48 @@ public class Parser {
             Character.setCurrentRoom(nextLocation);
             System.out.println(Character.getCurrentRoom().getLongDescription());
         }
+    }
+
+    private static void takeItem() {
+        if (argument == null) {
+            System.out.println("Take what?");
+            return;
+        }
+
+        Item item = Character.getCurrentRoom().getItem(argument);
+
+        if (item == null) {
+            System.out.println("You cannot take nothing!");
+        } else {
+            Character.addItem(argument, Character.getCurrentRoom().getItem(argument));
+            Character.getCurrentRoom().removeItem(argument);
+            System.out.println("You have taken a " + argument);
+        }
+    }
+
+    private static void dropItem() {
+        if (argument == null) {
+            System.out.println("Drop what?");
+            return;
+        }
+
+        Item item = Character.getItem(argument);
+
+        if (item == null) {
+            System.out.println("You cannot drop nothing!");
+        } else {
+            Character.getCurrentRoom().setItem(argument, item);
+            Character.removeItem(argument);
+            System.out.println("You have dropped a " + argument);
+        }
+    }
+
+    private static void showInventory() {
+        Map<String, Item> ItemList = Character.getItemList();
+
+        for (String item : ItemList.keySet()) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
     }
 }

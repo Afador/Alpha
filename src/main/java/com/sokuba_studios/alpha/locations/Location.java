@@ -1,27 +1,44 @@
 package src.main.java.com.sokuba_studios.alpha.locations;
 
+import src.main.java.com.sokuba_studios.alpha.Item;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class Location {
     private final String description;
-    private java.util.Map<String, Location> exits; // Map direction to neighboring Room
+    private final Map<String, Location> EXITS; // Map direction to neighboring Room
+    private final Map<String, Item> ITEMS;
 
     public Location(String description) {
         this.description = description;
-        exits = new HashMap<>();
+        EXITS = new HashMap<>();
+        ITEMS = new HashMap<>();
     }
 
     public void setExit(String direction, Location neighbor) {
-        exits.put(direction, neighbor);
+        EXITS.put(direction, neighbor);
     }
 
     public Location getExit(String direction) {
-        return exits.get(direction);
+        return EXITS.get(direction);
+    }
+
+    public void setItem(String name, Item item) {
+        ITEMS.put(name, item);
+    }
+
+    public Item getItem(String name) {
+        return ITEMS.get(name);
+    }
+
+    public void removeItem(String name) {
+        ITEMS.remove(name);
     }
 
     public String getExitString() {
         StringBuilder sb = new StringBuilder();
-        for (String direction : exits.keySet()) {
+        for (String direction : EXITS.keySet()) {
             sb.append(direction).append(" ");
         }
         return sb.toString().trim();

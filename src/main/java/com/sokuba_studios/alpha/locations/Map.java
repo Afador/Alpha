@@ -1,5 +1,7 @@
 package src.main.java.com.sokuba_studios.alpha.locations;
 
+import src.main.java.com.sokuba_studios.alpha.Item;
+
 public class Map {
     private static Location[] locations;
     private static Location currentLocation;
@@ -20,6 +22,9 @@ public class Map {
         outside.setExit("south", lab);
         outside.setExit("west", pub);
         outside.setExit("north", ise);
+
+        Item shovel = new Item("It is a shovel");
+        outside.setItem("shovel", shovel);
 
         theatre.setExit("west", outside);
 
