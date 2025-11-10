@@ -1,35 +1,26 @@
 package src.main.java.com.sokuba_studios.alpha.commands;
 
-import src.main.java.com.sokuba_studios.alpha.Character;
-import src.main.java.com.sokuba_studios.alpha.Item;
-import src.main.java.com.sokuba_studios.alpha.locations.Location;
-import src.main.java.com.sokuba_studios.alpha.locations.LocationMap;
+import src.main.java.com.sokuba_studios.alpha.commands.item.DropCommand;
+import src.main.java.com.sokuba_studios.alpha.commands.item.InventoryCommand;
+import src.main.java.com.sokuba_studios.alpha.commands.item.TakeCommand;
+import src.main.java.com.sokuba_studios.alpha.commands.misc.GoCommand;
+import src.main.java.com.sokuba_studios.alpha.commands.misc.LookCommand;
+import src.main.java.com.sokuba_studios.alpha.commands.misc.QuitCommand;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Parser {
     private static final Scanner READER = new Scanner(System.in);
-    private static final Map<String, String> COMMANDS = new HashMap<>();
+    private static final Command[] COMMANDS = {new DropCommand(), new InventoryCommand(), new TakeCommand(),
+                                                new GoCommand(), new LookCommand(), new QuitCommand()};
 
     private static String key;
     private static String argument;
 
-    static {
-        COMMANDS.put("go", "Move to another room");
-        COMMANDS.put("quit", "End the game");
-        COMMANDS.put("help", "Show help");
-        COMMANDS.put("look", "Look around");
-        COMMANDS.put("eat", "Eat something");
-        COMMANDS.put("take", "Pick up an item");
-        COMMANDS.put("drop", "Drop an item");
-        COMMANDS.put("inventory", "It is an inventory");
-    }
-
     public static boolean getCommand() {
         System.out.print(">");
-        String inputLine = READER.nextLine();
+        String inputLine = READER.nextLine().toLowerCase();
 
         key = null;
         argument = null;
@@ -41,6 +32,7 @@ public class Parser {
                 argument = tokenizer.next();
             }
         }
+
         return processCommand();
     }
 
@@ -50,117 +42,13 @@ public class Parser {
             return false;
         }
 
-        switch (key) {
-            case "look":
-                showRoom();
-                break;
-            case "help":
-                printHelp();
-                break;
-            case "go":
-                goRoom();
-                break;
-            case "take":
-                takeItem();
-                break;
-            case "drop":
-                dropItem();
-                break;
-            case "inventory":
-                showInventory();
-                break;
-            case "quit":
-                if (argument != null) {
-                    System.out.println("Quit what?");
-                    return false;
-                } else {
-                    return true; // signal to quit
-                }
-            default:
-                System.out.println("I don't know what you mean...");
-                break;
+        for (Command command : COMMANDS) {
+            if (Objects.equals(command.getKey(), key)) {
+                return command.use(argument);
+            }
         }
+
+        System.out.println("I do not know what you mean...");
         return false;
-    }
-
-    public static void showCommands() {
-        System.out.print("Valid commands are: ");
-        for (String command : COMMANDS.keySet()) {
-            System.out.print(command + " ");
-        }
-        System.out.println();
-    }
-
-    private static void printHelp() {
-        System.out.println("You are lost. You are alone. You wander around the university.");
-        System.out.print("Your command words are: ");
-        Parser.showCommands();
-    }
-
-    private static void goRoom() {
-        if (argument == null) {
-            System.out.println("Go where?");
-            return;
-        }
-
-        Location nextLocation = LocationMap.getCurrentLocation().getExit(argument);
-
-        if (nextLocation == null) {
-            System.out.println("There is no door!");
-        } else {
-            LocationMap.setCurrentLocation(nextLocation);
-            System.out.println(LocationMap.getCurrentLocation().getDescription());
-        }
-    }
-
-    private static void takeItem() {
-        if (argument == null) {
-            System.out.println("Take what?");
-            return;
-        }
-
-        Item item = LocationMap.getCurrentLocation().getItem(argument);
-
-        if (item == null) {
-            System.out.println("You cannot take nothing!");
-        } else {
-            Character.addItem(argument, LocationMap.getCurrentLocation().getItem(argument));
-            LocationMap.getCurrentLocation().removeItem(argument);
-            System.out.println("You have taken a " + argument);
-        }
-    }
-
-    private static void dropItem() {
-        if (argument == null) {
-            System.out.println("Drop what?");
-            return;
-        }
-
-        Item item = Character.getItem(argument);
-
-        if (item == null) {
-            System.out.println("You cannot drop nothing!");
-        } else {
-            LocationMap.getCurrentLocation().addItem(argument, item);
-            Character.removeItem(argument);
-            System.out.println("You have dropped a " + argument);
-        }
-    }
-
-    private static void showInventory() {
-        Map<String, Item> ItemList = Character.getItemList();
-
-        for (String item : ItemList.keySet()) {
-            System.out.print(item + " ");
-        }
-        System.out.println();
-    }
-
-    private static void showRoom() {
-        Map<String, Item> ItemList = LocationMap.getCurrentLocation().getItemList();
-        for (String item : ItemList.keySet()) {
-            System.out.print(item + " ");
-        }
-        System.out.println();
     }
 }
