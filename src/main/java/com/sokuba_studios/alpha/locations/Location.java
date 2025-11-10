@@ -50,15 +50,13 @@ public class Location {
         return ITEMS;
     }
 
-    public void addExit(String direction, Location neighbor) {
-        EXITS.put(direction, neighbor);
+    public void addExit(Location neighbour, String... goArguments) {
+        for (String goArgument : goArguments) {
+            EXITS.put(goArgument, neighbour);
+        }
     }
 
     public Location getExit(String direction) {
         return EXITS.get(direction);
-    }
-
-    public Map<String, Location> getExitList() {
-        return EXITS;
     }
 }

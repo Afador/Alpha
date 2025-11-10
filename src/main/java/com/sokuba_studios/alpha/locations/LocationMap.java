@@ -15,26 +15,26 @@ public class LocationMap {
         largeTatamiRoom = new Location("Large Tatami Room", "A tatami room with eight tatami mats and a large tokonoma.\nYou can see a way leading to the engawa, and a small tatami room.");
         smallTatamiRoom = new Location("Small Tatami Room", "A tatami room with three tatami mats.\nYou can go back to the large tatami room.");
 
-        entryway.addExit("kitchen", kitchen);
-        entryway.addExit("tatami", tatamiRoom);
-        entryway.addExit("upstairs", engawa);
+        entryway.addExit(kitchen, "kitchen", "to kitchen");
+        entryway.addExit(tatamiRoom, "tatami");
+        entryway.addExit(engawa, "upstairs");
 
-        kitchen.addExit("entryway", entryway);
-        kitchen.addExit("bathroom", bathroom);
-        kitchen.addExit("tatami", tatamiRoom);
+        kitchen.addExit(entryway, "entryway");
+        kitchen.addExit(bathroom, "bathroom");
+        kitchen.addExit(tatamiRoom, "tatami");
 
-        bathroom.addExit("kitchen", kitchen);
+        bathroom.addExit(kitchen, "kitchen");
 
-        tatamiRoom.addExit("entryway", entryway);
-        tatamiRoom.addExit("kitchen", kitchen);
+        tatamiRoom.addExit(entryway, "entryway");
+        tatamiRoom.addExit(kitchen, "kitchen");
 
-        engawa.addExit("downstairs", entryway);
-        engawa.addExit("tatami", largeTatamiRoom);
+        engawa.addExit(entryway, "downstairs");
+        engawa.addExit(largeTatamiRoom, "tatami");
 
-        largeTatamiRoom.addExit("engawa", engawa);
-        largeTatamiRoom.addExit("tatami", smallTatamiRoom);
+        largeTatamiRoom.addExit(engawa, "engawa");
+        largeTatamiRoom.addExit(smallTatamiRoom, "tatami");
 
-        smallTatamiRoom.addExit("tatami", largeTatamiRoom);
+        smallTatamiRoom.addExit(largeTatamiRoom, "tatami");
 
         currentLocation = entryway;
     }

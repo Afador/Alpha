@@ -28,8 +28,12 @@ public class Parser {
         Scanner tokenizer = new Scanner(inputLine);
         if (tokenizer.hasNext()) {
             key = tokenizer.next();
+
             if (tokenizer.hasNext()) {
                 argument = tokenizer.next();
+            }
+            while (tokenizer.hasNext()) {
+                argument = String.join(" ", argument, tokenizer.next());
             }
         }
 
