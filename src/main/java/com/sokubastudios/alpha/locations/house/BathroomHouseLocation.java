@@ -1,6 +1,6 @@
-package src.main.java.com.sokuba_studios.alpha.locations.house;
+package src.main.java.com.sokubastudios.alpha.locations.house;
 
-import src.main.java.com.sokuba_studios.alpha.locations.Location;
+import src.main.java.com.sokubastudios.alpha.locations.Location;
 
 import java.util.Map;
 

@@ -1,8 +1,8 @@
-package src.main.java.com.sokuba_studios.alpha.commands.item;
+package src.main.java.com.sokubastudios.alpha.commands.item;
 
-import src.main.java.com.sokuba_studios.alpha.Character;
-import src.main.java.com.sokuba_studios.alpha.Item;
-import src.main.java.com.sokuba_studios.alpha.commands.Command;
+import src.main.java.com.sokubastudios.alpha.Character;
+import src.main.java.com.sokubastudios.alpha.Item;
+import src.main.java.com.sokubastudios.alpha.commands.Command;
 
 import java.util.Map;
 

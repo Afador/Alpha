@@ -1,9 +1,9 @@
-package src.main.java.com.sokuba_studios.alpha.commands.item;
+package src.main.java.com.sokubastudios.alpha.commands.item;
 
-import src.main.java.com.sokuba_studios.alpha.Character;
-import src.main.java.com.sokuba_studios.alpha.Item;
-import src.main.java.com.sokuba_studios.alpha.commands.Command;
-import src.main.java.com.sokuba_studios.alpha.locations.LocationMap;
+import src.main.java.com.sokubastudios.alpha.Character;
+import src.main.java.com.sokubastudios.alpha.Item;
+import src.main.java.com.sokubastudios.alpha.commands.Command;
+import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class DropCommand implements Command {
     @Override
@@ -13,7 +13,7 @@ public class DropCommand implements Command {
             return false;
         }
 
-        Item item = src.main.java.com.sokuba_studios.alpha.Character.getItem(argument);
+        Item item = src.main.java.com.sokubastudios.alpha.Character.getItem(argument);
 
         if (item == null) {
             System.out.println("You cannot drop nothing!");

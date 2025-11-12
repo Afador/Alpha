@@ -1,6 +1,6 @@
-package src.main.java.com.sokuba_studios.alpha.locations;
+package src.main.java.com.sokubastudios.alpha.locations;
 
-import src.main.java.com.sokuba_studios.alpha.locations.house.*;
+import src.main.java.com.sokubastudios.alpha.locations.house.*;
 
 public class LocationMap {
     private static Location currentLocation;

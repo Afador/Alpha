@@ -1,11 +1,11 @@
-package src.main.java.com.sokuba_studios.alpha.commands;
+package src.main.java.com.sokubastudios.alpha.commands;
 
-import src.main.java.com.sokuba_studios.alpha.commands.item.DropCommand;
-import src.main.java.com.sokuba_studios.alpha.commands.item.InventoryCommand;
-import src.main.java.com.sokuba_studios.alpha.commands.item.TakeCommand;
-import src.main.java.com.sokuba_studios.alpha.commands.misc.GoCommand;
-import src.main.java.com.sokuba_studios.alpha.commands.misc.LookCommand;
-import src.main.java.com.sokuba_studios.alpha.commands.misc.QuitCommand;
+import src.main.java.com.sokubastudios.alpha.commands.item.DropCommand;
+import src.main.java.com.sokubastudios.alpha.commands.item.InventoryCommand;
+import src.main.java.com.sokubastudios.alpha.commands.item.TakeCommand;
+import src.main.java.com.sokubastudios.alpha.commands.misc.GoCommand;
+import src.main.java.com.sokubastudios.alpha.commands.misc.LookCommand;
+import src.main.java.com.sokubastudios.alpha.commands.misc.QuitCommand;
 
 import java.util.Objects;
 import java.util.Scanner;

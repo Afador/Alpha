@@ -1,6 +1,6 @@
-package src.main.java.com.sokuba_studios.alpha.commands.misc;
+package src.main.java.com.sokubastudios.alpha.commands.misc;
 
-import src.main.java.com.sokuba_studios.alpha.commands.Command;
+import src.main.java.com.sokubastudios.alpha.commands.Command;
 
 public class QuitCommand implements Command {
     @Override
