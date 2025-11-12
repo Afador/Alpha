@@ -18,6 +18,7 @@ public class GoCommand implements Command {
             System.out.println("There is no door!");
         } else {
             LocationMap.setCurrentLocation(nextLocation);
+            System.out.println(LocationMap.getCurrentLocation().getName());
             System.out.println(LocationMap.getCurrentLocation().getDescription());
         }
 

@@ -30,6 +30,7 @@ public class AlphaMain {
         System.out.println("Project Alpha");
         System.out.println("© 2025 Sokuba Studios");
         System.out.println();
+        System.out.println(LocationMap.getCurrentLocation().getName());
         System.out.println(LocationMap.getCurrentLocation().getDescription());
     }
 }

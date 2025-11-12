@@ -1,42 +1,28 @@
 package src.main.java.com.sokuba_studios.alpha.locations;
 
+import src.main.java.com.sokuba_studios.alpha.locations.house.*;
+
 public class LocationMap {
     private static Location currentLocation;
 
     public static void initialiseLocations() {
-        // rooms within the primary house
-        Location entryway, kitchen, bathroom, tatamiRoom, engawa, largeTatamiRoom, smallTatamiRoom;
+        BathroomHouseLocation bathroom = new BathroomHouseLocation();
+        EngawaHouseLocation engawa = new EngawaHouseLocation();
+        EntrywayHouseLocation entryway = new EntrywayHouseLocation();
+        KitchenHouseLocation kitchen = new KitchenHouseLocation();
+        LargeTatamiRoomHouseLocation largeTatamiRoom = new LargeTatamiRoomHouseLocation();
+        SmallTatamiRoomHouseLocation smallTatamiRoom = new SmallTatamiRoomHouseLocation();
+        TatamiRoomHouseLocation tatamiRoom = new TatamiRoomHouseLocation();
 
-        entryway = new Location("Grandmother's Entryway", "The entryway for your grandmother's house.\nIt warmly welcomes you inside.\nYou can see a way leading to the kitchen, a tatami room, and stairs leading up.");
-        kitchen = new Location("Kitchen", "The kitchen. It is a kitchen.\nYou can see a way leading to the entryway, a bathroom, and a tatami room.");
-        bathroom = new Location("Bathroom", "It is a bathroom.\nYou poo and pee here.\nYou can also leave and go to the kitchen.");
-        tatamiRoom = new Location("Tatami Room", "A tatami room with six tatami mats and a small tokonoma.\nYou can see a way leading to the kitchen, and the entryway.");
-        engawa = new Location("Engawa", "Leading into the forest situated on the mountain behind the house.\nYou can see a way leading to a large tatami room, and stairs leading down.");
-        largeTatamiRoom = new Location("Large Tatami Room", "A tatami room with eight tatami mats and a large tokonoma.\nYou can see a way leading to the engawa, and a small tatami room.");
-        smallTatamiRoom = new Location("Small Tatami Room", "A tatami room with three tatami mats.\nYou can go back to the large tatami room.");
+        bathroom.addExits(kitchen);
+        engawa.addExits(entryway, largeTatamiRoom);
+        entryway.addExits(engawa, kitchen, tatamiRoom);
+        kitchen.addExits(bathroom, entryway, tatamiRoom);
+        largeTatamiRoom.addExits(engawa, smallTatamiRoom);
+        smallTatamiRoom.addExits(largeTatamiRoom);
+        tatamiRoom.addExits(entryway, kitchen);
 
-        entryway.addExit(kitchen, "kitchen", "to kitchen");
-        entryway.addExit(tatamiRoom, "tatami");
-        entryway.addExit(engawa, "upstairs");
-
-        kitchen.addExit(entryway, "entryway");
-        kitchen.addExit(bathroom, "bathroom");
-        kitchen.addExit(tatamiRoom, "tatami");
-
-        bathroom.addExit(kitchen, "kitchen");
-
-        tatamiRoom.addExit(entryway, "entryway");
-        tatamiRoom.addExit(kitchen, "kitchen");
-
-        engawa.addExit(entryway, "downstairs");
-        engawa.addExit(largeTatamiRoom, "tatami");
-
-        largeTatamiRoom.addExit(engawa, "engawa");
-        largeTatamiRoom.addExit(smallTatamiRoom, "tatami");
-
-        smallTatamiRoom.addExit(largeTatamiRoom, "tatami");
-
-        currentLocation = entryway;
+        setCurrentLocation(entryway);
     }
 
     public static Location getCurrentLocation() {
