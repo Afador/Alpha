@@ -3,7 +3,6 @@ package src.main.java.com.sokubastudios.alpha.commands.item;
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
-import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class TakeCommand implements Command {
     @Override
@@ -13,13 +12,13 @@ public class TakeCommand implements Command {
             return false;
         }
 
-        Item item = LocationMap.getCurrentLocation().getItem(argument);
+        Item item = locationMap.getCurrentLocation().getItem(argument);
 
         if (item == null) {
             System.out.println("You cannot take nothing!");
         } else {
-            Character.addItem(argument, LocationMap.getCurrentLocation().getItem(argument));
-            LocationMap.getCurrentLocation().removeItem(argument);
+            Character.addItem(argument, locationMap.getCurrentLocation().getItem(argument));
+            locationMap.getCurrentLocation().removeItem(argument);
             System.out.println("You have taken a " + argument);
         }
 

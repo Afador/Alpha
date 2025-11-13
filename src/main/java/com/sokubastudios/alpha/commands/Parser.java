@@ -6,19 +6,24 @@ import src.main.java.com.sokubastudios.alpha.commands.item.TakeCommand;
 import src.main.java.com.sokubastudios.alpha.commands.misc.GoCommand;
 import src.main.java.com.sokubastudios.alpha.commands.misc.LookCommand;
 import src.main.java.com.sokubastudios.alpha.commands.misc.QuitCommand;
+import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Parser {
-    private static final Scanner READER = new Scanner(System.in);
-    private static final Command[] COMMANDS = {new DropCommand(), new InventoryCommand(), new TakeCommand(),
-                                                new GoCommand(), new LookCommand(), new QuitCommand()};
+    private final Scanner READER = new Scanner(System.in);
+    private final Command[] COMMANDS;
 
-    private static String key;
-    private static String argument;
+    private String key;
+    private String argument;
 
-    public static boolean getCommand() {
+    public Parser(LocationMap locationMap) {
+        COMMANDS = new Command[]{new DropCommand(), new InventoryCommand(), new TakeCommand(),
+                new GoCommand(locationMap), new LookCommand(), new QuitCommand()};
+    }
+
+    public boolean getCommand() {
         System.out.print(">");
         String inputLine = READER.nextLine().toLowerCase();
 
@@ -40,7 +45,7 @@ public class Parser {
         return processCommand();
     }
 
-    public static boolean processCommand() {
+    public boolean processCommand() {
         if (key == null) {
             System.out.println("I don't understand your command...");
             return false;

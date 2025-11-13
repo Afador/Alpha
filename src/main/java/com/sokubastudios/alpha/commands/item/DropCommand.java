@@ -3,7 +3,6 @@ package src.main.java.com.sokubastudios.alpha.commands.item;
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
-import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class DropCommand implements Command {
     @Override
@@ -18,7 +17,7 @@ public class DropCommand implements Command {
         if (item == null) {
             System.out.println("You cannot drop nothing!");
         } else {
-            LocationMap.getCurrentLocation().addItem(argument, item);
+            locationMap.getCurrentLocation().addItem(argument, item);
             Character.removeItem(argument);
             System.out.println("You have dropped a " + argument);
         }

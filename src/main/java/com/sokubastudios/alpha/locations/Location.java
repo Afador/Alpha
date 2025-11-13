@@ -5,18 +5,26 @@ import src.main.java.com.sokubastudios.alpha.Item;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Location {
+public class Location {
+    private final String NAME;
+    private final String DESCRIPTION;
     private final Map<String, Item> ITEMS;
     private final Map<String, Location> EXITS;
 
-    public Location() {
+    public Location(String inNAME, String inDESCIRPTION) {
+        NAME = inNAME;
+        DESCRIPTION = inDESCIRPTION;
         EXITS = new HashMap<>();
         ITEMS = new HashMap<>();
     }
 
-    public abstract String getName();
+    public String getName() {
+        return NAME;
+    }
 
-    public abstract String getDescription();
+    public String getDescription() {
+        return DESCRIPTION;
+    }
 
     public void addItem(String name, Item item) {
         ITEMS.put(name, item);
