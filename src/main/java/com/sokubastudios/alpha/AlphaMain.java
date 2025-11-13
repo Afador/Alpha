@@ -3,10 +3,8 @@ package src.main.java.com.sokubastudios.alpha;
 import src.main.java.com.sokubastudios.alpha.commands.Parser;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
-import java.io.*;
-
-public class AlphaMain implements Serializable {
-    private LocationMap locationMap;
+public class AlphaMain {
+    private final LocationMap locationMap = new LocationMap();
 
     public static void main(String[] args) {
         AlphaMain game = new AlphaMain();
@@ -14,24 +12,6 @@ public class AlphaMain implements Serializable {
     }
 
     public AlphaMain() {
-        try {
-            FileInputStream fis = new FileInputStream("serial.txt");
-            System.out.println();
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            locationMap = (LocationMap) ois.readObject();
-        } catch (Exception e) {
-            System.out.println("ERROR: AM22");
-            locationMap = new LocationMap();
-        }
-
-        try {
-            FileOutputStream fos = new FileOutputStream("serial.txt");
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(locationMap);
-        } catch (Exception e) {
-            System.out.println("ERROR: AM45");
-        }
-
         locationMap.initialiseLocations();
         Character.setCurrentRoom(locationMap.getCurrentLocation());
     }
