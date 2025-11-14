@@ -3,8 +3,15 @@ package src.main.java.com.sokubastudios.alpha.commands.item;
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
+import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class DropCommand implements Command {
+    private final LocationMap locationMap;
+
+    public DropCommand(LocationMap inLocationMap) {
+        locationMap = inLocationMap;
+    }
+
     @Override
     public boolean use(String argument) {
         if (argument == null) {

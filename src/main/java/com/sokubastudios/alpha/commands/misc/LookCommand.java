@@ -3,10 +3,17 @@ package src.main.java.com.sokubastudios.alpha.commands.misc;
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
+import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 import java.util.Map;
 
 public class LookCommand implements Command {
+    private final LocationMap locationMap;
+
+    public LookCommand(LocationMap inLocationMap) {
+        locationMap = inLocationMap;
+    }
+
     @Override
     public boolean use(String argument) {
         System.out.println(Character.getCurrentRoom().getDescription());

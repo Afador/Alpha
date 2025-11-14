@@ -1,11 +1,7 @@
 package src.main.java.com.sokubastudios.alpha.commands;
 
-import src.main.java.com.sokubastudios.alpha.commands.item.DropCommand;
-import src.main.java.com.sokubastudios.alpha.commands.item.InventoryCommand;
-import src.main.java.com.sokubastudios.alpha.commands.item.TakeCommand;
-import src.main.java.com.sokubastudios.alpha.commands.misc.GoCommand;
-import src.main.java.com.sokubastudios.alpha.commands.misc.LookCommand;
-import src.main.java.com.sokubastudios.alpha.commands.misc.QuitCommand;
+import src.main.java.com.sokubastudios.alpha.commands.item.*;
+import src.main.java.com.sokubastudios.alpha.commands.misc.*;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 import java.util.Scanner;
@@ -59,11 +55,11 @@ public class Parser {
 
     private Command createCommand() {
         return switch (key) {
-            case "drop" -> new DropCommand();
+            case "drop" -> new DropCommand(locationMap);
             case "inventory" -> new InventoryCommand();
-            case "take" -> new TakeCommand();
+            case "take" -> new TakeCommand(locationMap);
             case "go" -> new GoCommand(locationMap);
-            case "look" -> new LookCommand();
+            case "look" -> new LookCommand(locationMap);
             case "quit" -> new QuitCommand();
             default -> null;
         };

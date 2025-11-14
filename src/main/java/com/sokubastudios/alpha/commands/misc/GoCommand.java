@@ -7,8 +7,8 @@ import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 public class GoCommand implements Command {
     private final LocationMap locationMap;
 
-    public GoCommand(LocationMap inLocatioMap) {
-        locationMap = inLocatioMap;
+    public GoCommand(LocationMap inLocationMap) {
+        locationMap = inLocationMap;
     }
 
     @Override
