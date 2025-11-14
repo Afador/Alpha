@@ -54,7 +54,7 @@ public class LocationMap {
                 entry(engawa, new String[]{"engawa", "to engawa", "upstairs", "up"}),
                 entry(kitchen, new String[]{"kitchen", "to kitchen"}),
                 entry(tatamiRoom, new String[]{"tatami", "to tatami", "tatami room", "to tatami room"}),
-                entry(mainStreet, new String[]{"main street", "to main street", "street", "to street"})
+                entry(mainStreet, new String[]{"main street", "to main street", "street", "to street", "out"})
         ));
         kitchen.addExits(Map.ofEntries(
                 entry(bathroom, new String[]{"bathroom", "to bathroom"}),
