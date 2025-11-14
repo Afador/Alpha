@@ -8,24 +8,22 @@ import src.main.java.com.sokubastudios.alpha.commands.misc.LookCommand;
 import src.main.java.com.sokubastudios.alpha.commands.misc.QuitCommand;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Parser {
-    private final Scanner READER = new Scanner(System.in);
-    private final Command[] COMMANDS;
+    private final Scanner SCANNER = new Scanner(System.in);
+    private final LocationMap locationMap;
 
     private String key;
     private String argument;
 
-    public Parser(LocationMap locationMap) {
-        COMMANDS = new Command[]{new DropCommand(), new InventoryCommand(), new TakeCommand(),
-                new GoCommand(locationMap), new LookCommand(), new QuitCommand()};
+    public Parser(LocationMap inLocationMap) {
+        locationMap = inLocationMap;
     }
 
     public boolean getCommand() {
         System.out.print(">");
-        String inputLine = READER.nextLine().toLowerCase();
+        String inputLine = SCANNER.nextLine().toLowerCase();
 
         key = null;
         argument = null;
@@ -45,19 +43,29 @@ public class Parser {
         return processCommand();
     }
 
-    public boolean processCommand() {
+    private boolean processCommand() {
         if (key == null) {
             System.out.println("I don't understand your command...");
             return false;
         }
 
-        for (Command command : COMMANDS) {
-            if (Objects.equals(command.getKey(), key)) {
-                return command.use(argument);
-            }
+        Command command = createCommand();
+        if (command == null) {
+            System.out.println("I do not know what you mean...");
+            return false;
         }
+        return command.use(argument);
+    }
 
-        System.out.println("I do not know what you mean...");
-        return false;
+    private Command createCommand() {
+        return switch (key) {
+            case "drop" -> new DropCommand();
+            case "inventory" -> new InventoryCommand();
+            case "take" -> new TakeCommand();
+            case "go" -> new GoCommand(locationMap);
+            case "look" -> new LookCommand();
+            case "quit" -> new QuitCommand();
+            default -> null;
+        };
     }
 }
