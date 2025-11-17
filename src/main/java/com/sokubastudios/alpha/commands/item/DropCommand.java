@@ -6,9 +6,11 @@ import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class DropCommand implements Command {
+    private final Character character;
     private final LocationMap locationMap;
 
-    public DropCommand(LocationMap inLocationMap) {
+    public DropCommand(Character inCharacter, LocationMap inLocationMap) {
+        character = inCharacter;
         locationMap = inLocationMap;
     }
 
@@ -19,13 +21,13 @@ public class DropCommand implements Command {
             return false;
         }
 
-        Item item = src.main.java.com.sokubastudios.alpha.Character.getItem(argument);
+        Item item = character.getItem(argument);
 
         if (item == null) {
             System.out.println("You cannot drop nothing!");
         } else {
             locationMap.getCurrentLocation().addItem(argument, item);
-            Character.removeItem(argument);
+            character.removeItem(argument);
             System.out.println("You have dropped a " + argument);
         }
 

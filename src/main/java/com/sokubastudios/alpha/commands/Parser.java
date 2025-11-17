@@ -1,5 +1,6 @@
 package src.main.java.com.sokubastudios.alpha.commands;
 
+import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.commands.item.*;
 import src.main.java.com.sokubastudios.alpha.commands.misc.*;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
@@ -8,12 +9,14 @@ import java.util.Scanner;
 
 public class Parser {
     private final Scanner SCANNER = new Scanner(System.in);
+    private final Character character;
     private final LocationMap locationMap;
 
     private String key;
     private String argument;
 
-    public Parser(LocationMap inLocationMap) {
+    public Parser(Character inCharacter, LocationMap inLocationMap) {
+        character = inCharacter;
         locationMap = inLocationMap;
     }
 
@@ -55,9 +58,9 @@ public class Parser {
 
     private Command createCommand() {
         return switch (key) {
-            case "drop" -> new DropCommand(locationMap);
-            case "inventory" -> new InventoryCommand();
-            case "take" -> new TakeCommand(locationMap);
+            case "drop" -> new DropCommand(character, locationMap);
+            case "inventory" -> new InventoryCommand(character);
+            case "take" -> new TakeCommand(character, locationMap);
             case "go" -> new GoCommand(locationMap);
             case "look" -> new LookCommand(locationMap);
             case "quit" -> new QuitCommand();

@@ -1,6 +1,5 @@
 package src.main.java.com.sokubastudios.alpha.commands.misc;
 
-import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
@@ -16,7 +15,8 @@ public class LookCommand implements Command {
 
     @Override
     public boolean use(String argument) {
-        System.out.println(Character.getCurrentRoom().getDescription());
+        System.out.println(locationMap.getCurrentLocation().getName());
+        System.out.println(locationMap.getCurrentLocation().getDescription());
 
         Map<String, Item> ItemList = locationMap.getCurrentLocation().getItemList();
         for (String item : ItemList.keySet()) {

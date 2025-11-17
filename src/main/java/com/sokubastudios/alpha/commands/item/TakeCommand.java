@@ -6,9 +6,11 @@ import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class TakeCommand implements Command {
+    private final Character character;
     private final LocationMap locationMap;
 
-    public TakeCommand(LocationMap inLocationMap) {
+    public TakeCommand(Character inCharacter,LocationMap inLocationMap) {
+        character = inCharacter;
         locationMap = inLocationMap;
     }
 
@@ -24,7 +26,7 @@ public class TakeCommand implements Command {
         if (item == null) {
             System.out.println("You cannot take nothing!");
         } else {
-            Character.addItem(argument, locationMap.getCurrentLocation().getItem(argument));
+            character.addItem(argument, locationMap.getCurrentLocation().getItem(argument));
             locationMap.getCurrentLocation().removeItem(argument);
             System.out.println("You have taken a " + argument);
         }

@@ -7,9 +7,15 @@ import src.main.java.com.sokubastudios.alpha.commands.Command;
 import java.util.Map;
 
 public class InventoryCommand implements Command {
+    private final Character character;
+
+    public InventoryCommand(Character inCharacter) {
+        character = inCharacter;
+    }
+
     @Override
     public boolean use(String argument) {
-        Map<String, Item> ItemList = Character.getItemList();
+        Map<String, Item> ItemList = character.getItemList();
 
         for (String item : ItemList.keySet()) {
             System.out.print(item + " ");

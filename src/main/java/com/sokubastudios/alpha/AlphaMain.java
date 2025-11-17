@@ -4,7 +4,9 @@ import src.main.java.com.sokubastudios.alpha.commands.Parser;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class AlphaMain {
-    private final LocationMap locationMap = new LocationMap();
+    private final Character character;
+    private final LocationMap locationMap;
+    private final Parser parser;
 
     public static void main(String[] args) {
         AlphaMain game = new AlphaMain();
@@ -12,20 +14,21 @@ public class AlphaMain {
     }
 
     public AlphaMain() {
+        character = new Character();
+        locationMap = new LocationMap();
+        parser = new Parser(character, locationMap);
+
         locationMap.initialiseLocations();
-        Character.setCurrentRoom(locationMap.getCurrentLocation());
     }
 
     public void play() {
         printWelcome();
 
         boolean finished = false;
-        Parser parser = new Parser(locationMap);
         while (!finished) {
             finished = parser.getCommand();
         }
-        System.out.println("Thank you for playing. Goodbye.");
-
+        System.out.println("Game Terminated");
     }
 
     private void printWelcome() {
