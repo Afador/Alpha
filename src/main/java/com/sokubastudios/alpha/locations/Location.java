@@ -11,9 +11,9 @@ public class Location {
     private final Map<String, Item> ITEMS;
     private final Map<String, Location> EXITS;
 
-    public Location(String inNAME, String inDESCIRPTION) {
+    public Location(String inNAME, String inDESCRIPTION) {
         NAME = inNAME;
-        DESCRIPTION = inDESCIRPTION;
+        DESCRIPTION = inDESCRIPTION;
         EXITS = new HashMap<>();
         ITEMS = new HashMap<>();
     }
