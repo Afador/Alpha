@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    {
+      "id": "root",
+      "data": "The root of the entire thingy",
+      "choices": {
+        "1": "choiceOne",
+        "2": "choiceTwo"
+      }
+    },
+    {
+      "id": "choiceOne",
+      "data": "Choice One",
+      "choices": {
+        "end": "end"
+      }
+    },
+    {
+      "id": "choiceTwo",
+      "data": "Choice Two",
+      "choices": {
+        "1": "choiceTwoSub",
+        "end": "end"
+      }
+    },
+    {
+      "id": "choiceTwoSub",
+      "data": "Sub Choice of Choice Two",
+      "choices": {
+        "end": "end"
+      }
+    },
+    {
+      "id": "end",
+      "data": "END",
+      "choices": {
+      }
+    }
+  ]
+}
