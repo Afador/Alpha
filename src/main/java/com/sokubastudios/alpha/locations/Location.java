@@ -26,8 +26,14 @@ public class Location {
         return DESCRIPTION;
     }
 
-    public void addItem(String name, Item item) {
+    public void addItem(Item item, String name) {
         ITEMS.put(name, item);
+    }
+
+    public void addItems(Map<Item, String> itemMap) {
+        for (Item item : itemMap.keySet()) {
+            ITEMS.put(itemMap.get(item), item);
+        }
     }
 
     public void removeItem(String name) {

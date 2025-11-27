@@ -1,5 +1,7 @@
 package src.main.java.com.sokubastudios.alpha.locations;
 
+import src.main.java.com.sokubastudios.alpha.Item;
+
 import java.util.Map;
 
 import static java.util.Map.entry;
@@ -76,6 +78,8 @@ public class LocationMap {
         mainStreet.addExits(Map.ofEntries(
                 entry(entryway, new String[]{"home", "house", "to house"})
         ));
+
+        bathroom.addItem(new Item("plunger"), "plunger");
 
         setCurrentLocation(entryway);
     }

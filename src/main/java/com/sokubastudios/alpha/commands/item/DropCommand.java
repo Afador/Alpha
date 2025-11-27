@@ -26,7 +26,7 @@ public class DropCommand implements Command {
         if (item == null) {
             System.out.println("You cannot drop nothing!");
         } else {
-            locationMap.getCurrentLocation().addItem(argument, item);
+            locationMap.getCurrentLocation().addItem(item, argument);
             character.removeItem(argument);
             System.out.println("You have dropped a " + argument);
         }
