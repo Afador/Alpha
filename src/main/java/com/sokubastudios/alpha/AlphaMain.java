@@ -1,6 +1,7 @@
 package src.main.java.com.sokubastudios.alpha;
 
 import src.main.java.com.sokubastudios.alpha.commands.Parser;
+import src.main.java.com.sokubastudios.alpha.dialogue.NodeInitialiser;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class AlphaMain {
@@ -23,6 +24,10 @@ public class AlphaMain {
 
     public void play() {
         printWelcome();
+
+        NodeInitialiser nodeInitialiser = new NodeInitialiser();
+
+        nodeInitialiser.initialiseNodes();
 
         boolean finished = false;
         while (!finished) {
