@@ -1,38 +1,55 @@
 {
+  "name": "convo",
   "nodes": [
     {
       "id": "root",
       "data": "The root of the entire thingy",
+      "options": {
+        "0": "Go to choice one.",
+        "1": "Go to choice two."
+      },
       "choices": {
-        "1": "choiceOne",
-        "2": "choiceTwo"
+        "0": "choiceOne",
+        "1": "choiceTwo"
       }
     },
     {
       "id": "choiceOne",
       "data": "Choice One",
+      "options": {
+        "0": "Node conversation ending"
+      },
       "choices": {
-        "end": "end"
+        "0": "end"
       }
     },
     {
       "id": "choiceTwo",
       "data": "Choice Two",
+      "options": {
+        "0": "Go to the sub choice of choice two.",
+        "1": "Node conversation ending"
+      },
       "choices": {
-        "1": "choiceTwoSub",
-        "end": "end"
+        "0": "choiceTwoSub",
+        "1": "end"
       }
     },
     {
       "id": "choiceTwoSub",
       "data": "Sub Choice of Choice Two",
+      "options": {
+        "0": "Node conversation ending"
+      },
       "choices": {
-        "end": "end"
+        "0": "end"
       }
     },
     {
       "id": "end",
-      "data": "END",
+      "data": "Bye bye",
+      "options": {
+      },
       "choices": {
       }
     }
