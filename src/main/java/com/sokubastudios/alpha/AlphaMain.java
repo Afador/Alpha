@@ -5,9 +5,9 @@ import src.main.java.com.sokubastudios.alpha.dialogue.NodeInitialiser;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class AlphaMain {
-    private final Character character;
-    private final LocationMap locationMap;
-    private final Parser parser;
+    private final Character CHARACTER;
+    private final LocationMap LOCATION_MAP;
+    private final Parser PARSER;
 
     public static void main(String[] args) {
         AlphaMain game = new AlphaMain();
@@ -15,11 +15,11 @@ public class AlphaMain {
     }
 
     public AlphaMain() {
-        character = new Character();
-        locationMap = new LocationMap();
-        parser = new Parser(character, locationMap);
+        CHARACTER = new Character();
+        LOCATION_MAP = new LocationMap();
+        PARSER = new Parser(CHARACTER, LOCATION_MAP);
 
-        locationMap.initialiseLocations();
+        LOCATION_MAP.initialiseLocations();
     }
 
     public void play() {
@@ -31,7 +31,7 @@ public class AlphaMain {
 
         boolean finished = false;
         while (!finished) {
-            finished = parser.getCommand();
+            finished = PARSER.getCommand();
         }
         System.out.println("Game Terminated");
     }
@@ -41,7 +41,7 @@ public class AlphaMain {
         System.out.println("Project Alpha");
         System.out.println("© 2025 Sokuba Studios");
         System.out.println();
-        System.out.println(locationMap.getCurrentLocation().getName());
-        System.out.println(locationMap.getCurrentLocation().getDescription());
+        System.out.println(LOCATION_MAP.getCurrentLocation().getName());
+        System.out.println(LOCATION_MAP.getCurrentLocation().getDescription());
     }
 }
