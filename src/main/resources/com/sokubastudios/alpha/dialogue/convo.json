@@ -4,54 +4,59 @@
     {
       "id": "root",
       "data": "The root of the entire thingy",
-      "options": {
-        "0": "Go to choice one.",
-        "1": "Go to choice two."
-      },
-      "choices": {
-        "0": "choiceOne",
-        "1": "choiceTwo"
-      }
+      "options": [
+        {
+          "optionData": "Go to option one.",
+          "nextNode": "optionOne"
+        },
+        {
+          "optionData": "Go to option two.",
+          "nextNode": "optionTwo"
+        }
+      ]
     },
     {
-      "id": "choiceOne",
-      "data": "Choice One",
-      "options": {
-        "0": "Node conversation ending"
-      },
-      "choices": {
-        "0": "end"
-      }
+      "id": "optionOne",
+      "data": "This is the node for option one.",
+      "options": [
+        {
+          "optionData": "Redo convo???????",
+          "nextNode": "root"
+        },
+        {
+          "optionData": "Node conversation ending",
+          "nextNode": "end"
+        }
+      ]
     },
     {
-      "id": "choiceTwo",
-      "data": "Choice Two",
-      "options": {
-        "0": "Go to the sub choice of choice two.",
-        "1": "Node conversation ending"
-      },
-      "choices": {
-        "0": "choiceTwoSub",
-        "1": "end"
-      }
+      "id": "optionTwo",
+      "data": "This is the node for option two.",
+      "options": [
+        {
+          "optionData": "Go to the sub option of option two.",
+          "nextNode": "optionTwoSub"
+        },
+        {
+          "optionData": "Node conversation ending",
+          "nextNode": "end"
+        }
+      ]
     },
     {
-      "id": "choiceTwoSub",
-      "data": "Sub Choice of Choice Two",
-      "options": {
-        "0": "Node conversation ending"
-      },
-      "choices": {
-        "0": "end"
-      }
+      "id": "optionTwoSub",
+      "data": "Sub option of option Two",
+      "options": [
+        {
+          "optionData": "Node conversation ending",
+          "nextNode": "end"
+        }
+      ]
     },
     {
       "id": "end",
       "data": "Bye bye",
-      "options": {
-      },
-      "choices": {
-      }
+      "options": []
     }
   ]
 }
