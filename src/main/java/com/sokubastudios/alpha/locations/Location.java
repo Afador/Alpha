@@ -1,6 +1,7 @@
 package src.main.java.com.sokubastudios.alpha.locations;
 
 import src.main.java.com.sokubastudios.alpha.Item;
+import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,12 +11,14 @@ public class Location {
     private final String DESCRIPTION;
     private final Map<String, Item> ITEMS;
     private final Map<String, Location> EXITS;
+    private final Map<String, Npc> NPCS;
 
     public Location(String inNAME, String inDESCRIPTION) {
         NAME = inNAME;
         DESCRIPTION = inDESCRIPTION;
         EXITS = new HashMap<>();
         ITEMS = new HashMap<>();
+        NPCS = new HashMap<>();
     }
 
     public String getName() {
@@ -58,5 +61,17 @@ public class Location {
 
     public Location getExit(String direction) {
         return EXITS.get(direction);
+    }
+
+    public final void addNpc(Npc npc, String name) {
+        NPCS.put(name, npc);
+    }
+
+    public Npc getNpc(String npcName) {
+        return NPCS.get(npcName);
+    }
+
+    public Map<String, Npc> getNpcList() {
+        return NPCS;
     }
 }

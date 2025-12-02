@@ -3,6 +3,7 @@ package src.main.java.com.sokubastudios.alpha.commands.misc;
 import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
+import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
 import java.util.Map;
 
@@ -18,9 +19,15 @@ public class LookCommand implements Command {
         System.out.println(locationMap.getCurrentLocation().getName());
         System.out.println(locationMap.getCurrentLocation().getDescription());
 
-        Map<String, Item> ItemList = locationMap.getCurrentLocation().getItemList();
-        for (String item : ItemList.keySet()) {
+        Map<String, Item> itemList = locationMap.getCurrentLocation().getItemList();
+        for (String item : itemList.keySet()) {
             System.out.print(item + " ");
+        }
+        System.out.println();
+
+        Map<String, Npc> npcList = locationMap.getCurrentLocation().getNpcList();
+        for (String npc : npcList.keySet()) {
+            System.out.print(npc + " ");
         }
         System.out.println();
 

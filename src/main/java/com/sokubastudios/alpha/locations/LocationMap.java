@@ -1,6 +1,7 @@
 package src.main.java.com.sokubastudios.alpha.locations;
 
 import src.main.java.com.sokubastudios.alpha.Item;
+import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
 import java.util.Map;
 
@@ -79,7 +80,11 @@ public class LocationMap {
                 entry(entryway, new String[]{"home", "house", "to house"})
         ));
 
+
         bathroom.addItem(new Item("plunger"), "plunger");
+
+
+        tatamiRoom.addNpc(new Npc("grandmother", "gran"), "grandmother");
 
         setCurrentLocation(entryway);
     }
