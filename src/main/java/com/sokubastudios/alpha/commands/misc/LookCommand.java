@@ -8,24 +8,24 @@ import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 import java.util.Map;
 
 public class LookCommand implements Command {
-    private final LocationMap locationMap;
+    private final LocationMap LOCATION_MAP;
 
     public LookCommand(LocationMap inLocationMap) {
-        locationMap = inLocationMap;
+        LOCATION_MAP = inLocationMap;
     }
 
     @Override
     public boolean use(String argument) {
-        System.out.println(locationMap.getCurrentLocation().getName());
-        System.out.println(locationMap.getCurrentLocation().getDescription());
+        System.out.println(LOCATION_MAP.getCurrentLocation().getName());
+        System.out.println(LOCATION_MAP.getCurrentLocation().getDescription());
 
-        Map<String, Item> itemList = locationMap.getCurrentLocation().getItemList();
+        Map<String, Item> itemList = LOCATION_MAP.getCurrentLocation().getItemList();
         for (String item : itemList.keySet()) {
             System.out.print(item + " ");
         }
         System.out.println();
 
-        Map<String, Npc> npcList = locationMap.getCurrentLocation().getNpcList();
+        Map<String, Npc> npcList = LOCATION_MAP.getCurrentLocation().getNpcList();
         for (String npc : npcList.keySet()) {
             System.out.print(npc + " ");
         }
