@@ -17,18 +17,15 @@ public class AlphaMain {
     public AlphaMain() {
         CHARACTER = new Character();
         LOCATION_MAP = new LocationMap();
-        PARSER = new Parser(CHARACTER, LOCATION_MAP);
+        NodeManager nodeManager = new NodeManager();
+        PARSER = new Parser(CHARACTER, LOCATION_MAP, nodeManager);
 
+        nodeManager.initialiseNodes();
         LOCATION_MAP.initialiseLocations();
     }
 
     public void play() {
         printWelcome();
-
-        NodeManager nodeManager = new NodeManager();
-
-        nodeManager.initialiseNodes();
-        nodeManager.startNodePath("convo");
 
         boolean finished = false;
         while (!finished) {

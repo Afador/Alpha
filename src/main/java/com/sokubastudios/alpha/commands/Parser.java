@@ -3,6 +3,7 @@ package src.main.java.com.sokubastudios.alpha.commands;
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.commands.item.*;
 import src.main.java.com.sokubastudios.alpha.commands.misc.*;
+import src.main.java.com.sokubastudios.alpha.dialogue.NodeManager;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 import java.util.Scanner;
@@ -11,13 +12,15 @@ public class Parser {
     private final Scanner SCANNER = new Scanner(System.in);
     private final Character character;
     private final LocationMap locationMap;
+    private final NodeManager NODE_MANAGER;
 
     private String key;
     private String argument;
 
-    public Parser(Character inCharacter, LocationMap inLocationMap) {
+    public Parser(Character inCharacter, LocationMap inLocationMap, NodeManager inNodeManager) {
         character = inCharacter;
         locationMap = inLocationMap;
+        NODE_MANAGER = inNodeManager;
     }
 
     public boolean getCommand() {
@@ -64,6 +67,7 @@ public class Parser {
             case "go" -> new GoCommand(locationMap);
             case "look" -> new LookCommand(locationMap);
             case "quit" -> new QuitCommand();
+            case "talk" -> new TalkCommand(locationMap, NODE_MANAGER);
             default -> null;
         };
     }
