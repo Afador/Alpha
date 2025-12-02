@@ -5,10 +5,10 @@ import src.main.java.com.sokubastudios.alpha.locations.Location;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 public class GoCommand implements Command {
-    private final LocationMap locationMap;
+    private final LocationMap LOCATION_MAP;
 
     public GoCommand(LocationMap inLocationMap) {
-        locationMap = inLocationMap;
+        LOCATION_MAP = inLocationMap;
     }
 
     @Override
@@ -18,14 +18,14 @@ public class GoCommand implements Command {
             return false;
         }
 
-        Location nextLocation = locationMap.getCurrentLocation().getExit(argument);
+        Location nextLocation = LOCATION_MAP.getCurrentLocation().getExit(argument);
 
         if (nextLocation == null) {
             System.out.println("There is no door!");
         } else {
-            locationMap.setCurrentLocation(nextLocation);
-            System.out.println(locationMap.getCurrentLocation().getName());
-            System.out.println(locationMap.getCurrentLocation().getDescription());
+            LOCATION_MAP.setCurrentLocation(nextLocation);
+            LookCommand lookCommand = new LookCommand(LOCATION_MAP);
+            lookCommand.use();
         }
 
         return false;

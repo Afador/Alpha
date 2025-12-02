@@ -14,22 +14,32 @@ public class LookCommand implements Command {
         LOCATION_MAP = inLocationMap;
     }
 
+    public boolean use() {
+        return use(null);
+    }
+
     @Override
     public boolean use(String argument) {
         System.out.println(LOCATION_MAP.getCurrentLocation().getName());
         System.out.println(LOCATION_MAP.getCurrentLocation().getDescription());
 
         Map<String, Item> itemList = LOCATION_MAP.getCurrentLocation().getItemList();
-        for (String item : itemList.keySet()) {
-            System.out.print(item + " ");
+        if (!itemList.isEmpty()) {
+            System.out.println("Items In Room: ");
+            for (String item : itemList.keySet()) {
+                System.out.print(item + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
 
         Map<String, Npc> npcList = LOCATION_MAP.getCurrentLocation().getNpcList();
-        for (String npc : npcList.keySet()) {
-            System.out.print(npc + " ");
+        if (!npcList.isEmpty()) {
+            System.out.println("NPCs In Room: ");
+            for (String npc : npcList.keySet()) {
+                System.out.print(npc + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
 
         return false;
     }

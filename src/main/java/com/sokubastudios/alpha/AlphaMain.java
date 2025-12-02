@@ -1,6 +1,7 @@
 package src.main.java.com.sokubastudios.alpha;
 
 import src.main.java.com.sokubastudios.alpha.commands.Parser;
+import src.main.java.com.sokubastudios.alpha.commands.misc.LookCommand;
 import src.main.java.com.sokubastudios.alpha.dialogue.NodeManager;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
@@ -39,7 +40,7 @@ public class AlphaMain {
         System.out.println("Project Alpha");
         System.out.println("© 2025 Sokuba Studios");
         System.out.println();
-        System.out.println(LOCATION_MAP.getCurrentLocation().getName());
-        System.out.println(LOCATION_MAP.getCurrentLocation().getDescription());
+        LookCommand lookCommand = new LookCommand(LOCATION_MAP);
+        lookCommand.use();
     }
 }
