@@ -5,17 +5,17 @@ import src.main.java.com.sokubastudios.alpha.commands.misc.LookCommand;
 import src.main.java.com.sokubastudios.alpha.dialogue.NodeManager;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
-public class AlphaMain {
+public class Main {
     private final Character CHARACTER;
     private final LocationMap LOCATION_MAP;
     private final Parser PARSER;
 
     public static void main(String[] args) {
-        AlphaMain game = new AlphaMain();
+        Main game = new Main();
         game.play();
     }
 
-    public AlphaMain() {
+    public Main() {
         CHARACTER = new Character();
         LOCATION_MAP = new LocationMap();
         NodeManager nodeManager = new NodeManager();
