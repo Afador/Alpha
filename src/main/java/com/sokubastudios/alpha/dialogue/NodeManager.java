@@ -42,19 +42,12 @@ public class NodeManager {
                         String nextNode = (String) option.get("nextNode");
 
                         NODE_MAPS.get(dialogueName).get(id).addOption(optionData, nextNode);
-                        System.out.println(NODE_MAPS.get(dialogueName).get(id).getOptions());
                     }
                 }
             }
         } catch (Exception e) {
             System.out.println("There has been an error reading in the files from the dialogues jsons.");
             System.exit(51);
-        }
-
-        for (Map<String, Node> nodeMap : NODE_MAPS.values()) {
-            for (Node node : nodeMap.values()) {
-                System.out.println(node.getId() + " | " + node.getData());
-            }
         }
     }
 
