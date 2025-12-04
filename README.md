@@ -20,3 +20,5 @@ The game runs via different text commands. Below are the listed commands:
 Saving is done via the quit command. If you wish to start a new save after already starting one this must be done via
 manual deletion of the save.txt file. However, the game is only ~1 minute long so it should not even need to be
 manually quit.
+
+THE JAR FILE IS IN THE BUILD AREA AS IT CANNOT BE ATTACHED VIA BRIGHTSPACE
