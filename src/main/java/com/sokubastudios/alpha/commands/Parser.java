@@ -27,8 +27,6 @@ public class Parser implements Serializable {
     }
 
     public boolean getCommand() {
-        System.out.print(">");
-
         key = null;
         argument = null;
 
