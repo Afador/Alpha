@@ -2,10 +2,11 @@ package src.main.java.com.sokubastudios.alpha.npcs;
 
 import src.main.java.com.sokubastudios.alpha.Item;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Npc {
+public class Npc implements Serializable {
     private final String NAME;
     private final String DIALOGUE_NAME;
     private final Map<String, Item> ITEMS;

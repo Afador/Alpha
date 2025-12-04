@@ -1,9 +1,10 @@
 package src.main.java.com.sokubastudios.alpha;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Character {
+public class Character implements Serializable {
     private final Map<String, Item> ITEMS = new HashMap<>();
 
     public void addItem(String name, Item item) {

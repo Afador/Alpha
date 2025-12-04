@@ -3,11 +3,12 @@ package src.main.java.com.sokubastudios.alpha.locations;
 import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import static java.util.Map.entry;
 
-public class LocationMap {
+public class LocationMap implements Serializable {
     private Location currentLocation;
 
     public void initialiseLocations() {

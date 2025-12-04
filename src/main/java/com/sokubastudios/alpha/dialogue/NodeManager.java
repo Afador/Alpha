@@ -6,9 +6,10 @@ import org.json.simple.parser.JSONParser;
 import src.main.java.com.sokubastudios.alpha.GameState;
 
 import java.io.FileReader;
+import java.io.Serializable;
 import java.util.*;
 
-public class NodeManager {
+public class NodeManager implements Serializable {
     private final Map<String, Map<String, Node>> NODE_MAPS;
     private final String[] fileNames = {"convo.json"};
 

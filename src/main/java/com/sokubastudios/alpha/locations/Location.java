@@ -3,10 +3,11 @@ package src.main.java.com.sokubastudios.alpha.locations;
 import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Location {
+public class Location implements Serializable {
     private final String NAME;
     private final String DESCRIPTION;
     private final Map<String, Item> ITEMS;

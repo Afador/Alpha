@@ -1,6 +1,8 @@
 package src.main.java.com.sokubastudios.alpha;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable {
     private final String NAME;
 
     public Item(String inName) {

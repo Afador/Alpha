@@ -7,21 +7,22 @@ import src.main.java.com.sokubastudios.alpha.commands.misc.*;
 import src.main.java.com.sokubastudios.alpha.dialogue.NodeManager;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Parser {
-    private final Character character;
-    private final LocationMap locationMap;
+public class Parser implements Serializable {
+    private final Character CHARACTER;
+    private final LocationMap LOCATION_MAP;
     private final NodeManager NODE_MANAGER;
 
     private String key;
     private String argument;
 
     public Parser(Character inCharacter, LocationMap inLocationMap, NodeManager inNodeManager) {
-        character = inCharacter;
-        locationMap = inLocationMap;
+        CHARACTER = inCharacter;
+        LOCATION_MAP = inLocationMap;
         NODE_MANAGER = inNodeManager;
     }
 
@@ -77,13 +78,13 @@ public class Parser {
 
     private Command createCommand() {
         return switch (key) {
-            case "drop" -> new DropCommand(character, locationMap);
-            case "inventory" -> new InventoryCommand(character);
-            case "take" -> new TakeCommand(character, locationMap);
-            case "go" -> new GoCommand(locationMap);
-            case "look" -> new LookCommand(locationMap);
+            case "drop" -> new DropCommand(CHARACTER, LOCATION_MAP);
+            case "inventory" -> new InventoryCommand(CHARACTER);
+            case "take" -> new TakeCommand(CHARACTER, LOCATION_MAP);
+            case "go" -> new GoCommand(LOCATION_MAP);
+            case "look" -> new LookCommand(LOCATION_MAP);
             case "quit" -> new QuitCommand();
-            case "talk" -> new TalkCommand(locationMap, NODE_MANAGER);
+            case "talk" -> new TalkCommand(LOCATION_MAP, NODE_MANAGER);
             default -> null;
         };
     }

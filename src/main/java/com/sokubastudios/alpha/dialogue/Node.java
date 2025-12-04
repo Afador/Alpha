@@ -1,10 +1,11 @@
 package src.main.java.com.sokubastudios.alpha.dialogue;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Node {
+public class Node implements Serializable {
     private final List<Map<String, String>> OPTIONS;
     private final String ID;
     private final String DATA;

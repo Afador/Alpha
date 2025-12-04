@@ -5,9 +5,10 @@ import src.main.java.com.sokubastudios.alpha.commands.misc.LookCommand;
 import src.main.java.com.sokubastudios.alpha.dialogue.NodeManager;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
+import java.io.Serializable;
 import java.util.concurrent.ArrayBlockingQueue;
 
-public class GameState {
+public class GameState implements Serializable {
     public static ArrayBlockingQueue<String> outputQueue = new ArrayBlockingQueue<>(1);
     public static ArrayBlockingQueue<String> inputQueue = new ArrayBlockingQueue<>(1);
 
