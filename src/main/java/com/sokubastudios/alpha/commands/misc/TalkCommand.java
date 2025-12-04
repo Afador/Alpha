@@ -28,7 +28,7 @@ public class TalkCommand implements Command {
             GameState.println("You cannot talk to nothing!");
         } else {
             GameState.println("Conversation with " + argument + " begins.");
-            NODE_MANAGER.startNodePath(npc.getDialogueName());
+            NODE_MANAGER.startNodePath(npc.getDialogueName(), LOCATION_MAP);
         }
 
         return false;

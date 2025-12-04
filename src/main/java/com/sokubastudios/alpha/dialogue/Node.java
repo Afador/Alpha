@@ -5,16 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Node implements Serializable {
+public class Node<T> implements Serializable {
     private final List<Map<String, String>> OPTIONS;
     private final String ID;
     private final String DATA;
+    private final T OTHER;
 
-    public Node(String inID, String inDATA) {
+    public Node(String inId, String inData, T inOther) {
         OPTIONS = new ArrayList<>();
 
-        ID = inID;
-        DATA = inDATA;
+        ID = inId;
+        DATA = inData;
+        OTHER = inOther;
     }
 
     public String getId() {
@@ -23,6 +25,10 @@ public class Node implements Serializable {
 
     public String getData() {
         return DATA;
+    }
+
+    public T getOther() {
+        return OTHER;
     }
 
     public void addOption(String optionData, String nextNode) {

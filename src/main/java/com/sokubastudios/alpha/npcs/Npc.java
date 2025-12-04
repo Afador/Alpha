@@ -7,14 +7,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Npc implements Serializable {
-    private final String NAME;
-    private final String DIALOGUE_NAME;
     private final Map<String, Item> ITEMS;
+    private final String NAME;
+
+    private String dialogueName;
 
     public Npc(String inNAME, String inDIALOGUE_NAME) {
-        NAME = inNAME;
-        DIALOGUE_NAME = inDIALOGUE_NAME;
         ITEMS = new HashMap<>();
+        NAME = inNAME;
+
+        dialogueName = inDIALOGUE_NAME;
     }
 
     public String getName() {
@@ -22,7 +24,11 @@ public class Npc implements Serializable {
     }
 
     public String getDialogueName() {
-        return DIALOGUE_NAME;
+        return dialogueName;
+    }
+
+    public void setDialogueName(String inDialogueName) {
+        dialogueName = inDialogueName;
     }
 
     public void addItem(Item item, String name) {

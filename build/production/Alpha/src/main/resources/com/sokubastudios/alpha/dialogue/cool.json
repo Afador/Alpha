@@ -1,9 +1,9 @@
 {
-  "name": "convo",
+  "name": "cool",
   "nodes": [
     {
       "id": "root",
-      "data": "The root of the entire thingy",
+      "data": "DF - The root of the entire thingy",
       "options": [
         {
           "optionData": "Go to option one.",
@@ -36,8 +36,8 @@
       "data": "This is the node for option two.",
       "options": [
         {
-          "optionData": "Go to the switch of option two.",
-          "nextNode": "switch"
+          "optionData": "Go to the sub option of option two.",
+          "nextNode": "optionTwoSub"
         },
         {
           "optionData": "Node conversation ending",
@@ -47,7 +47,7 @@
       "other": null
     },
     {
-      "id": "switch",
+      "id": "optionTwoSub",
       "data": "Sub option of option Two",
       "options": [
         {
@@ -55,7 +55,7 @@
           "nextNode": "end"
         }
       ],
-      "other": "cool"
+      "other": null
     },
     {
       "id": "end",

@@ -85,7 +85,7 @@ public class LocationMap implements Serializable {
         bathroom.addItem(new Item("plunger"), "plunger");
 
 
-        tatamiRoom.addNpc(new Npc("grandmother", "gran"), "grandmother");
+        tatamiRoom.addNpc(new Npc("grandmother", "convo"), "grandmother");
 
         setCurrentLocation(entryway);
     }

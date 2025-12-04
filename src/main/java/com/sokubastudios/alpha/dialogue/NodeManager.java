@@ -4,14 +4,16 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import src.main.java.com.sokubastudios.alpha.GameState;
+import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
+import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
 import java.io.FileReader;
 import java.io.Serializable;
 import java.util.*;
 
 public class NodeManager implements Serializable {
-    private final Map<String, Map<String, Node>> NODE_MAPS;
-    private final String[] fileNames = {"convo.json"};
+    private final Map<String, Map<String, Node<Object>>> NODE_MAPS;
+    private final String[] fileNames = {"convo.json", "cool.json"};
 
     public NodeManager() {
         NODE_MAPS = new HashMap<>();
@@ -33,8 +35,9 @@ public class NodeManager implements Serializable {
 
                     String id = (String) node.get("id");
                     String data = (String) node.get("data");
+                    Object other = node.get("other");
 
-                    NODE_MAPS.get(dialogueName).put(id, new Node(id, data));
+                    NODE_MAPS.get(dialogueName).put(id, new Node<>(id, data, other));
 
                     JSONArray optionArray = (JSONArray) node.get("options");
                     for (Object object : optionArray) {
@@ -48,22 +51,38 @@ public class NodeManager implements Serializable {
                 }
             }
         } catch (Exception e) {
-            GameState.println("There has been an error reading in the files from the dialogues jsons.");
-            System.exit(51);
+            System.out.println("ERROR: NM-51");
+            System.out.println(Arrays.toString(e.getStackTrace()));
         }
     }
 
-    public void startNodePath(String dialogueName) {
-        Map<String, Node> nodeMap = NODE_MAPS.get(dialogueName);
+    public void startNodePath(String dialogueName, LocationMap locationMap) {
+        Map<String, Node<Object>> nodeMap = NODE_MAPS.get(dialogueName);
 
         String currentNodeId = "root";
-        Node currentNode = nodeMap.get(currentNodeId);
+        Node<Object> currentNode = nodeMap.get(currentNodeId);
 
         while (!Objects.equals(currentNode.getId(), "end")) {
             GameState.println(currentNode.getData());
 
             String[] optionData = new String[currentNode.getOptions().size()];
             String[] nextNode = new String[currentNode.getOptions().size()];
+
+            switch (currentNode.getId()) {
+                case "shop":
+                    break;
+                case "sold":
+                    break;
+                case "switch":
+                    for (Npc npc : locationMap.getCurrentLocation().getNpcList().values()) {
+                        if (Objects.equals(npc.getDialogueName(), dialogueName)) {
+                            npc.setDialogueName((String) currentNode.getOther());
+                        }
+                    }
+
+                    currentNode = nodeMap.get(currentNode.getOptions().getFirst().get(currentNode.getOptions().getFirst().keySet().toArray()[0]));
+                    continue;
+            }
 
             int i = 0;
             for (Map<String, String> option : currentNode.getOptions()) {
@@ -93,5 +112,7 @@ public class NodeManager implements Serializable {
 
             currentNode = nodeMap.get(nextNode[choice - 1]);
         }
+
+        GameState.println("Conversation Over");
     }
 }

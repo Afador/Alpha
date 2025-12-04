@@ -1,5 +1,5 @@
 {
-  "name": "gran",
+  "name": "convo",
   "nodes": [
     {
       "id": "root",
@@ -13,7 +13,8 @@
           "optionData": "Go to option two.",
           "nextNode": "optionTwo"
         }
-      ]
+      ],
+      "other": null
     },
     {
       "id": "optionOne",
@@ -27,36 +28,40 @@
           "optionData": "Node conversation ending",
           "nextNode": "end"
         }
-      ]
+      ],
+      "other": null
     },
     {
       "id": "optionTwo",
       "data": "This is the node for option two.",
       "options": [
         {
-          "optionData": "Go to the sub option of option two.",
-          "nextNode": "optionTwoSub"
+          "optionData": "Go to the switch of option two.",
+          "nextNode": "switch"
         },
         {
           "optionData": "Node conversation ending",
           "nextNode": "end"
         }
-      ]
+      ],
+      "other": null
     },
     {
-      "id": "optionTwoSub",
+      "id": "switch",
       "data": "Sub option of option Two",
       "options": [
         {
           "optionData": "Node conversation ending",
           "nextNode": "end"
         }
-      ]
+      ],
+      "other": "cool"
     },
     {
       "id": "end",
       "data": "Bye bye",
-      "options": []
+      "options": [],
+      "other": null
     }
   ]
 }
