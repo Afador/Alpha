@@ -13,7 +13,7 @@ public class LocationMap implements Serializable {
 
     public void initialiseLocations() {
         Location bathroom, engawa, entryway, kitchen, largeTatamiRoom, smallTatamiRoom, tatamiRoom;
-        Location mainStreet;
+        Location mainStreet, pharmacy;
 
         bathroom = new Location("The House's Bathroom", """
                 It is a bathroom.
@@ -41,10 +41,14 @@ public class LocationMap implements Serializable {
                 A tatami room with six tatami mats and a small tokonoma.
                 You can see a way leading to the kitchen, and the entryway.""");
 
-        mainStreet = new Location("GameState Street", """
+        mainStreet = new Location("Main Street", """
                 This is the main street of your grandmother's town.
                 Many shops and houses litter the street.
-                You can see your grandmother's home, the pharmacy, and a shop.""");
+                You can see your grandmother's home, and the pharmacy.""");
+        pharmacy = new Location("Pharmacy", """
+                This the the pharmacy.
+                You can buy drugs here.
+                You need money to buy drugs.""");
 
 
         bathroom.addExits(Map.ofEntries(
@@ -78,14 +82,20 @@ public class LocationMap implements Serializable {
         ));
 
         mainStreet.addExits(Map.ofEntries(
-                entry(entryway, new String[]{"home", "house", "to house"})
+                entry(entryway, new String[]{"home", "house", "to house"}),
+                entry(pharmacy, new String[]{"drugs", "to drugs", "pharmacy", "to pharmacy"})
+        ));
+        pharmacy.addExits(Map.ofEntries(
+                entry(mainStreet, new String[]{"main street", "to main street", "street", "to street", "out"})
         ));
 
 
         bathroom.addItem(new Item("plunger"), "plunger");
 
 
-        tatamiRoom.addNpc(new Npc("grandmother", "convo"), "grandmother");
+        tatamiRoom.addNpc(new Npc("grandmother", "sickly"), "grandmother");
+
+        pharmacy.addNpc(new Npc("pharmacist", "storeLong"), "pharmacist");
 
         setCurrentLocation(entryway);
     }

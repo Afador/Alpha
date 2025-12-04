@@ -8,4 +8,8 @@ public class Item implements Serializable {
     public Item(String inName) {
         NAME = inName;
     }
+
+    public String getName() {
+        return NAME;
+    }
 }

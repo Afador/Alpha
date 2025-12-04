@@ -1,0 +1,71 @@
+{
+  "name": "sickly",
+  "nodes": [
+    {
+      "id": "root",
+      "data": "Hi there. Any chance you can go grab me some medicine? I need it urgently or I will die!",
+      "options": [
+        {
+          "optionData": "Sure thing.",
+          "nextNode": "store"
+        },
+        {
+          "optionData": "No.",
+          "nextNode": "spoilt"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "store",
+      "data": "Here is the money for the drugs.",
+      "options": [
+        {
+          "optionData": "Thanks!",
+          "nextNode": "switch"
+        },
+        {
+          "optionData": "Will go get them now.",
+          "nextNode": "switch"
+        }
+      ],
+      "other": [
+        {
+          "name": "cash"
+        }
+      ]
+    },
+    {
+      "id": "switch",
+      "data": "Go quickly I have little time before I die without the drugs!",
+      "options": [
+        {
+          "optionData": "Leave.",
+          "nextNode": "end"
+        }
+      ],
+      "other": "saviour"
+    },
+    {
+      "id": "spoilt",
+      "data": "You spoilt little brat. I hope you enjoy watching me die.",
+      "options": [
+        {
+          "optionData": "Rude much?",
+          "nextNode": "end"
+        },
+        {
+          "optionData": "No you.",
+          "nextNode": "end"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "end",
+      "data": null,
+      "options": [],
+      "other": null
+    }
+  ]
+}

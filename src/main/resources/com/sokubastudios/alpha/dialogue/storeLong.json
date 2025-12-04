@@ -1,0 +1,141 @@
+{
+  "name": "storeLong",
+  "nodes": [
+    {
+      "id": "root",
+      "data": "Hello! Welcome to my amazing pharmacy store.",
+      "options": [
+        {
+          "optionData": "Hello!",
+          "nextNode": "daughter"
+        },
+        {
+          "optionData": "Oops. Wrong place.",
+          "nextNode": "final"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "daughter",
+      "data": "We don't see much young folk around these parts. Let me guess. You must be the old woman's granddaughter?",
+      "options": [
+        {
+          "optionData": "Yes!",
+          "nextNode": "pickUp"
+        },
+        {
+          "optionData": "How did you know?",
+          "nextNode": "pickUp"
+        },
+        {
+          "optionData": "Nope.",
+          "nextNode": "notDaughter"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "notDaughter",
+      "data": "You're not?! Wait... This is one of those jokes isn't it. I get it. Hahaha...",
+      "options": [
+        {
+          "optionData": "Yes, a joke.",
+          "nextNode": "pickUp"
+        },
+        {
+          "optionData": "It's not a joke...!",
+          "nextNode": "pickUp"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "pickUp",
+      "data": "Guess I haven't lost my ability to perceive people. Just an old trick of the trade. I presume you are here for her medicine?",
+      "options": [
+        {
+          "optionData": "Yes.",
+          "nextNode": "yesMedicine"
+        },
+        {
+          "optionData": "No.",
+          "nextNode": "noMedicine"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "yesMedicine",
+      "data": "Well I have it here if you have the money.",
+      "options": [
+        {
+          "optionData": "I have it here.",
+          "nextNode": "store"
+        },
+        {
+          "optionData": "Sorry, let me go and get that before coming back.",
+          "nextNode": "switch"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "store",
+      "data": "Let me grab the drugs for you.",
+      "options": [
+        {
+          "optionData": "Thanks.",
+          "nextNode": "switch"
+        }
+      ],
+      "other": [
+        {
+          "name": "medicine"
+        },
+        {
+          "name": "cash"
+        }
+      ]
+    },
+    {
+      "id": "noMedicine",
+      "data": "Maybe, another time then.",
+      "options": [
+        {
+          "optionData": "Another time.",
+          "nextNode": "switch"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "switch",
+      "data": "See you around.",
+      "options": [
+        {
+          "optionData": "Leave.",
+          "nextNode": "end"
+        }
+      ],
+      "other": "storeShort"
+    },
+    {
+      "id": "final",
+      "data": "See you around.",
+      "options": [
+        {
+          "optionData": "Leave.",
+          "nextNode": "end"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "end",
+      "data": null,
+      "options": [],
+      "other": null
+    }
+  ]
+}

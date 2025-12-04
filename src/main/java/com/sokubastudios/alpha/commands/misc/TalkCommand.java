@@ -1,5 +1,6 @@
 package src.main.java.com.sokubastudios.alpha.commands.misc;
 
+import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.GameState;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.dialogue.NodeManager;
@@ -7,10 +8,12 @@ import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
 public class TalkCommand implements Command {
+    private final Character CHARACTER;
     private final LocationMap LOCATION_MAP;
     private final NodeManager NODE_MANAGER;
 
-    public TalkCommand(LocationMap inLocationMap, NodeManager inNodeManager) {
+    public TalkCommand(Character inCharacter, LocationMap inLocationMap, NodeManager inNodeManager) {
+        CHARACTER = inCharacter;
         LOCATION_MAP = inLocationMap;
         NODE_MANAGER = inNodeManager;
     }
@@ -28,7 +31,7 @@ public class TalkCommand implements Command {
             GameState.println("You cannot talk to nothing!");
         } else {
             GameState.println("Conversation with " + argument + " begins.");
-            NODE_MANAGER.startNodePath(npc.getDialogueName(), LOCATION_MAP);
+            return NODE_MANAGER.startNodePath(npc.getDialogueName(), LOCATION_MAP, CHARACTER);
         }
 
         return false;

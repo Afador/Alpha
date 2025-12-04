@@ -1,0 +1,96 @@
+{
+  "name": "storeShort",
+  "nodes": [
+    {
+      "id": "root",
+      "data": "Hello! Welcome back.",
+      "options": [
+        {
+          "optionData": "Hello!",
+          "nextNode": "pickUp"
+        },
+        {
+          "optionData": "Oops. Wrong place.",
+          "nextNode": "final"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "pickUp",
+      "data": "I presume you are here for your grandmother's medicine?",
+      "options": [
+        {
+          "optionData": "Yes.",
+          "nextNode": "yesMedicine"
+        },
+        {
+          "optionData": "No.",
+          "nextNode": "noMedicine"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "yesMedicine",
+      "data": "Well I have it here if you have the money.",
+      "options": [
+        {
+          "optionData": "I have it here.",
+          "nextNode": "store"
+        },
+        {
+          "optionData": "Sorry, let me go and get that before coming back.",
+          "nextNode": "final"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "store",
+      "data": "Let me grab the drugs for you.",
+      "options": [
+        {
+          "optionData": "Thanks.",
+          "nextNode": "final"
+        }
+      ],
+      "other": [
+        {
+          "name": "medicine"
+        },
+        {
+          "name": "cash"
+        }
+      ]
+    },
+    {
+      "id": "noMedicine",
+      "data": "Maybe, another time then.",
+      "options": [
+        {
+          "optionData": "Another time.",
+          "nextNode": "final"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "final",
+      "data": "See you around.",
+      "options": [
+        {
+          "optionData": "Leave.",
+          "nextNode": "end"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "end",
+      "data": null,
+      "options": [],
+      "other": null
+    }
+  ]
+}

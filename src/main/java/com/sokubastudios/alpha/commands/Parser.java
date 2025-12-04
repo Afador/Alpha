@@ -82,7 +82,7 @@ public class Parser implements Serializable {
             case "go" -> new GoCommand(LOCATION_MAP);
             case "look" -> new LookCommand(LOCATION_MAP);
             case "quit" -> new QuitCommand();
-            case "talk" -> new TalkCommand(LOCATION_MAP, NODE_MANAGER);
+            case "talk" -> new TalkCommand(CHARACTER, LOCATION_MAP, NODE_MANAGER);
             default -> null;
         };
     }

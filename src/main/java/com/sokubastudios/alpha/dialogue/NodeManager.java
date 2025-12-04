@@ -3,7 +3,9 @@ package src.main.java.com.sokubastudios.alpha.dialogue;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.GameState;
+import src.main.java.com.sokubastudios.alpha.Item;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
@@ -13,7 +15,7 @@ import java.util.*;
 
 public class NodeManager implements Serializable {
     private final Map<String, Map<String, Node<Object>>> NODE_MAPS;
-    private final String[] fileNames = {"convo.json", "cool.json"};
+    private final String[] fileNames = {"sickly.json", "saviour.json", "storeLong.json", "storeShort.json"};
 
     public NodeManager() {
         NODE_MAPS = new HashMap<>();
@@ -51,12 +53,12 @@ public class NodeManager implements Serializable {
                 }
             }
         } catch (Exception e) {
-            System.out.println("ERROR: NM-51");
+            System.out.println("ERROR: NM-54");
             System.out.println(Arrays.toString(e.getStackTrace()));
         }
     }
 
-    public void startNodePath(String dialogueName, LocationMap locationMap) {
+    public boolean startNodePath(String dialogueName, LocationMap locationMap, Character character) {
         Map<String, Node<Object>> nodeMap = NODE_MAPS.get(dialogueName);
 
         String currentNodeId = "root";
@@ -69,9 +71,27 @@ public class NodeManager implements Serializable {
             String[] nextNode = new String[currentNode.getOptions().size()];
 
             switch (currentNode.getId()) {
-                case "shop":
-                    break;
-                case "sold":
+                case "store":
+                    List<Item> items = new ArrayList<>();
+
+                    for (Object object : (JSONArray) currentNode.getOther()) {
+                        JSONObject item = (JSONObject) object;
+
+                        items.add(new Item((String) item.get("name")));
+                    }
+
+                    if (items.size() < 2) {
+                        character.addItem(items.getFirst().getName(), items.getFirst());
+                    } else {
+                        Item charItem = character.getItem(items.getLast().getName());
+
+                        if (charItem != null) {
+                            character.addItem(items.getFirst().getName(), items.getFirst());
+                            character.removeItem(items.getLast().getName());
+                        } else {
+                            GameState.println("Looks like you don't have enough money!");
+                        }
+                    }
                     break;
                 case "switch":
                     for (Npc npc : locationMap.getCurrentLocation().getNpcList().values()) {
@@ -79,9 +99,11 @@ public class NodeManager implements Serializable {
                             npc.setDialogueName((String) currentNode.getOther());
                         }
                     }
-
-                    currentNode = nodeMap.get(currentNode.getOptions().getFirst().get(currentNode.getOptions().getFirst().keySet().toArray()[0]));
-                    continue;
+                    break;
+                case "gameWin":
+                    GameState.println("- - - < CONGRATS > - - -");
+                    GameState.println("YOU WIN");
+                    return true;
             }
 
             int i = 0;
@@ -114,5 +136,7 @@ public class NodeManager implements Serializable {
         }
 
         GameState.println("Conversation Over");
+
+        return false;
     }
 }

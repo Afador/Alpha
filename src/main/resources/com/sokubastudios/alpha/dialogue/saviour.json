@@ -1,0 +1,80 @@
+{
+  "name": "saviour",
+  "nodes": [
+    {
+      "id": "root",
+      "data": "Do... you have... my drugs....? I am..... nearly........ dead........",
+      "options": [
+        {
+          "optionData": "Yes.",
+          "nextNode": "store"
+        },
+        {
+          "optionData": "No.",
+          "nextNode": "dots"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "store",
+      "data": "Give.... .... plea ..... se.",
+      "options": [
+        {
+          "optionData": "Here.",
+          "nextNode": "grateful"
+        }
+      ],
+      "other": [
+        {
+          "name": "thank you for saving my life card"
+        },
+        {
+          "name": "medicine"
+        }
+      ]
+    },
+    {
+      "id": "grateful",
+      "data": "I feel so much better now. Thank you for saving my life!!!!!!",
+      "options": [
+        {
+          "optionData": "I would do it again because I love you so much.",
+          "nextNode": "optionTwoSub"
+        },
+        {
+          "optionData": "It was easy enough. [said nonchalant]",
+          "nextNode": "gameWin"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "dots",
+      "data": "................. ......",
+      "options": [
+        {
+          "optionData": "Run away.",
+          "nextNode": "end"
+        },
+        {
+          "optionData": "Leave.",
+          "nextNode": "end"
+        }
+      ],
+      "other": null
+    },
+    {
+      "id": "end",
+      "data": "Bye bye",
+      "options": [],
+      "other": null
+    },
+    {
+      "id": "gameWin",
+      "data": null,
+      "options": [],
+      "other": null
+    }
+  ]
+}
