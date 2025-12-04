@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Parser implements Serializable {
+    private final TrieNode TRIE_ROOT;
+
     private final Character CHARACTER;
     private final LocationMap LOCATION_MAP;
     private final NodeManager NODE_MANAGER;
@@ -24,6 +26,12 @@ public class Parser implements Serializable {
         CHARACTER = inCharacter;
         LOCATION_MAP = inLocationMap;
         NODE_MANAGER = inNodeManager;
+
+        String[] commandWords = new String[]{"drop", "inventory", "take", "go", "look", "quit", "talk"};
+        TRIE_ROOT = new TrieNode();
+        for (String commandWord : commandWords) {
+            TRIE_ROOT.insert(commandWord);
+        }
     }
 
     public boolean getCommand() {
@@ -69,6 +77,15 @@ public class Parser implements Serializable {
         Command command = createCommand();
         if (command == null) {
             GameState.println("I do not know what you mean...");
+
+            List<String> possibleCommands = TRIE_ROOT.search(key);
+            if (!possibleCommands.isEmpty()) {
+                GameState.println("Did you mean:");
+                for (String possibleCommand : possibleCommands) {
+                    GameState.println("- " + possibleCommand);
+                }
+            }
+
             return false;
         }
         return command.use(argument);
