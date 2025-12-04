@@ -40,7 +40,7 @@ public class Main {
                 oos.writeObject(gameState);
                 GameState.println("Game Saved");
             } catch (Exception e) {
-                System.out.println("ERROR: M-38");
+                System.out.println("ERROR: M-43");
                 System.out.println(Arrays.toString(e.getStackTrace()));
                 GameState.println("Game Was Unable To Save");
             }
