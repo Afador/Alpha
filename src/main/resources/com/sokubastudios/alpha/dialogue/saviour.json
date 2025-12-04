@@ -40,7 +40,7 @@
       "options": [
         {
           "optionData": "I would do it again because I love you so much.",
-          "nextNode": "optionTwoSub"
+          "nextNode": "gameWin"
         },
         {
           "optionData": "It was easy enough. [said nonchalant]",
