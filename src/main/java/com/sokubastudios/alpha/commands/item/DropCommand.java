@@ -2,6 +2,7 @@ package src.main.java.com.sokubastudios.alpha.commands.item;
 
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.Item;
+import src.main.java.com.sokubastudios.alpha.Main;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
@@ -17,18 +18,18 @@ public class DropCommand implements Command {
     @Override
     public boolean use(String argument) {
         if (argument == null) {
-            System.out.println("Drop what?");
+            Main.println("Drop what?");
             return false;
         }
 
         Item item = character.getItem(argument);
 
         if (item == null) {
-            System.out.println("You cannot drop nothing!");
+            Main.println("You cannot drop nothing!");
         } else {
             locationMap.getCurrentLocation().addItem(item, argument);
             character.removeItem(argument);
-            System.out.println("You have dropped a " + argument);
+            Main.println("You have dropped a " + argument);
         }
 
         return false;

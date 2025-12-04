@@ -1,5 +1,6 @@
 package src.main.java.com.sokubastudios.alpha.commands.misc;
 
+import src.main.java.com.sokubastudios.alpha.Main;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.Location;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
@@ -14,14 +15,14 @@ public class GoCommand implements Command {
     @Override
     public boolean use(String argument) {
         if (argument == null) {
-            System.out.println("Go where?");
+            Main.println("Go where?");
             return false;
         }
 
         Location nextLocation = LOCATION_MAP.getCurrentLocation().getExit(argument);
 
         if (nextLocation == null) {
-            System.out.println("There is no door!");
+            Main.println("There is no door!");
         } else {
             LOCATION_MAP.setCurrentLocation(nextLocation);
             LookCommand lookCommand = new LookCommand(LOCATION_MAP);

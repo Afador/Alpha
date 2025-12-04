@@ -3,6 +3,7 @@ package src.main.java.com.sokubastudios.alpha.dialogue;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import src.main.java.com.sokubastudios.alpha.Main;
 
 import java.io.FileReader;
 import java.util.*;
@@ -46,20 +47,19 @@ public class NodeManager {
                 }
             }
         } catch (Exception e) {
-            System.out.println("There has been an error reading in the files from the dialogues jsons.");
+            Main.println("There has been an error reading in the files from the dialogues jsons.");
             System.exit(51);
         }
     }
 
     public void startNodePath(String dialogueName) {
         Map<String, Node> nodeMap = NODE_MAPS.get(dialogueName);
-        Scanner scanner = new Scanner(System.in);
 
         String currentNodeId = "root";
         Node currentNode = nodeMap.get(currentNodeId);
 
         while (!Objects.equals(currentNode.getId(), "end")) {
-            System.out.println(currentNode.getData());
+            Main.println(currentNode.getData());
 
             String[] optionData = new String[currentNode.getOptions().size()];
             String[] nextNode = new String[currentNode.getOptions().size()];
@@ -69,15 +69,14 @@ public class NodeManager {
                 optionData[i] = (String) option.keySet().toArray()[0];
                 nextNode[i] = option.get(optionData[i]);
 
-                System.out.println((i + 1) + ". " + optionData[i]);
+                Main.println((i + 1) + ". " + optionData[i]);
                 i++;
             }
 
             int choice;
             while (true) {
                 try {
-                    System.out.print("\nWhich one? ");
-                    choice = scanner.nextInt();
+                    choice = Integer.parseInt(Main.inputQueue.take());
 
                     if (0 < choice && choice < optionData.length + 1) {
                         break;
@@ -85,11 +84,9 @@ public class NodeManager {
                         throw new IndexOutOfBoundsException();
                     }
                 } catch (IndexOutOfBoundsException e) {
-                    System.out.println("Not within expected parameters, you silly.");
-                    scanner.nextLine();
+                    Main.println("Not within expected parameters, you silly.");
                 } catch (Exception e) {
-                    System.out.println("Something went wrong. Try again.");
-                    scanner.nextLine();
+                    Main.println("Something went wrong. Try again.");
                 }
             }
 

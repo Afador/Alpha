@@ -1,6 +1,7 @@
 package src.main.java.com.sokubastudios.alpha.commands.misc;
 
 import src.main.java.com.sokubastudios.alpha.Item;
+import src.main.java.com.sokubastudios.alpha.Main;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 import src.main.java.com.sokubastudios.alpha.npcs.Npc;
@@ -20,25 +21,25 @@ public class LookCommand implements Command {
 
     @Override
     public boolean use(String argument) {
-        System.out.println(LOCATION_MAP.getCurrentLocation().getName());
-        System.out.println(LOCATION_MAP.getCurrentLocation().getDescription());
+        Main.println(LOCATION_MAP.getCurrentLocation().getName());
+        Main.println(LOCATION_MAP.getCurrentLocation().getDescription());
 
         Map<String, Item> itemList = LOCATION_MAP.getCurrentLocation().getItemList();
         if (!itemList.isEmpty()) {
-            System.out.println("Items In Room: ");
+            Main.println("Items In Room: ");
             for (String item : itemList.keySet()) {
-                System.out.print(item + " ");
+                Main.println("- " + item);
             }
-            System.out.println();
+            Main.println();
         }
 
         Map<String, Npc> npcList = LOCATION_MAP.getCurrentLocation().getNpcList();
         if (!npcList.isEmpty()) {
-            System.out.println("NPCs In Room: ");
+            Main.println("NPCs In Room: ");
             for (String npc : npcList.keySet()) {
-                System.out.print(npc + " ");
+                Main.println("- " + npc);
             }
-            System.out.println();
+            Main.println();
         }
 
         return false;

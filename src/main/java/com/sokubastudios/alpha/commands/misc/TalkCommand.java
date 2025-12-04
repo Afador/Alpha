@@ -1,5 +1,6 @@
 package src.main.java.com.sokubastudios.alpha.commands.misc;
 
+import src.main.java.com.sokubastudios.alpha.Main;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.dialogue.NodeManager;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
@@ -17,16 +18,16 @@ public class TalkCommand implements Command {
     @Override
     public boolean use(String argument) {
         if (argument == null) {
-            System.out.println("Take what?");
+            Main.println("Take what?");
             return false;
         }
 
         Npc npc = LOCATION_MAP.getCurrentLocation().getNpc(argument);
 
         if (npc == null) {
-            System.out.println("You cannot talk to nothing!");
+            Main.println("You cannot talk to nothing!");
         } else {
-            System.out.println("Conversation with " + argument + " begins.");
+            Main.println("Conversation with " + argument + " begins.");
             NODE_MANAGER.startNodePath(npc.getDialogueName());
         }
 
