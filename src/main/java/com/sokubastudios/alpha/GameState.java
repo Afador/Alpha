@@ -15,6 +15,8 @@ public class GameState implements Serializable {
     private final LocationMap LOCATION_MAP;
     private final Parser PARSER;
 
+    private boolean finished = false;
+
     public GameState() {
         NodeManager nodeManager = new NodeManager();
 
@@ -40,7 +42,6 @@ public class GameState implements Serializable {
     public void play() {
         printWelcome();
 
-        boolean finished = false;
         while (!finished) {
             finished = PARSER.getCommand();
         }
@@ -54,5 +55,9 @@ public class GameState implements Serializable {
         println();
         LookCommand lookCommand = new LookCommand(LOCATION_MAP);
         lookCommand.use();
+    }
+
+    public void endGame() {
+        finished = true;
     }
 }

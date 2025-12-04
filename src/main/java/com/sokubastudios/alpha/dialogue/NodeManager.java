@@ -6,6 +6,7 @@ import org.json.simple.parser.JSONParser;
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.GameState;
 import src.main.java.com.sokubastudios.alpha.Item;
+import src.main.java.com.sokubastudios.alpha.Main;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 import src.main.java.com.sokubastudios.alpha.npcs.Npc;
 
@@ -136,6 +137,10 @@ public class NodeManager implements Serializable {
         }
 
         GameState.println("Conversation Over");
+
+        if (Objects.equals(dialogueName, "sickly")) {
+            Main.startDeathThread();
+        }
 
         return false;
     }
