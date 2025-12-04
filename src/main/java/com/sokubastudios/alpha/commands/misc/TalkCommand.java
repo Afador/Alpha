@@ -18,7 +18,7 @@ public class TalkCommand implements Command {
     @Override
     public boolean use(String argument) {
         if (argument == null) {
-            GameState.println("Take what?");
+            GameState.println("Talk with who?");
             return false;
         }
 
