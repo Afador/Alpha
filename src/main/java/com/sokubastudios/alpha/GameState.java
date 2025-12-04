@@ -11,25 +11,14 @@ public class GameState {
     public static ArrayBlockingQueue<String> outputQueue = new ArrayBlockingQueue<>(1);
     public static ArrayBlockingQueue<String> inputQueue = new ArrayBlockingQueue<>(1);
 
-    private final Character CHARACTER;
     private final LocationMap LOCATION_MAP;
     private final Parser PARSER;
 
-    public static void main(String[] args) {
-        Thread gameApplicationThread = new Thread(() -> GameApplication.main(args));
-
-        GameState game = new GameState();
-        Thread gameThread = new Thread(game::play);
-
-        gameThread.start();
-        gameApplicationThread.start();
-    }
-
     public GameState() {
-        CHARACTER = new Character();
-        LOCATION_MAP = new LocationMap();
         NodeManager nodeManager = new NodeManager();
-        PARSER = new Parser(CHARACTER, LOCATION_MAP, nodeManager);
+
+        LOCATION_MAP = new LocationMap();
+        PARSER = new Parser(new Character(), LOCATION_MAP, nodeManager);
 
         nodeManager.initialiseNodes();
         LOCATION_MAP.initialiseLocations();
