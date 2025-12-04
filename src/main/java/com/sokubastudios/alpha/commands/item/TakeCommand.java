@@ -2,7 +2,7 @@ package src.main.java.com.sokubastudios.alpha.commands.item;
 
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.Item;
-import src.main.java.com.sokubastudios.alpha.Main;
+import src.main.java.com.sokubastudios.alpha.GameState;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
@@ -18,18 +18,18 @@ public class TakeCommand implements Command {
     @Override
     public boolean use(String argument) {
         if (argument == null) {
-            Main.println("Take what?");
+            GameState.println("Take what?");
             return false;
         }
 
         Item item = LOCATION_MAP.getCurrentLocation().getItem(argument);
 
         if (item == null) {
-            Main.println("You cannot take nothing!");
+            GameState.println("You cannot take nothing!");
         } else {
             CHARACTER.addItem(argument, LOCATION_MAP.getCurrentLocation().getItem(argument));
             LOCATION_MAP.getCurrentLocation().removeItem(argument);
-            Main.println("You have taken a " + argument);
+            GameState.println("You have taken a " + argument);
         }
 
         return false;

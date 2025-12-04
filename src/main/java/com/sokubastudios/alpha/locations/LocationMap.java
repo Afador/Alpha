@@ -40,7 +40,7 @@ public class LocationMap {
                 A tatami room with six tatami mats and a small tokonoma.
                 You can see a way leading to the kitchen, and the entryway.""");
 
-        mainStreet = new Location("Main Street", """
+        mainStreet = new Location("GameState Street", """
                 This is the main street of your grandmother's town.
                 Many shops and houses litter the street.
                 You can see your grandmother's home, the pharmacy, and a shop.""");

@@ -1,13 +1,13 @@
 package src.main.java.com.sokubastudios.alpha.commands.misc;
 
-import src.main.java.com.sokubastudios.alpha.Main;
+import src.main.java.com.sokubastudios.alpha.GameState;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 
 public class QuitCommand implements Command {
     @Override
     public boolean use(String argument) {
         if (argument != null) {
-            Main.println("Quit what?");
+            GameState.println("Quit what?");
             return false;
         } else {
             return true;

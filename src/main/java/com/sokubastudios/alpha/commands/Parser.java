@@ -1,7 +1,7 @@
 package src.main.java.com.sokubastudios.alpha.commands;
 
 import src.main.java.com.sokubastudios.alpha.Character;
-import src.main.java.com.sokubastudios.alpha.Main;
+import src.main.java.com.sokubastudios.alpha.GameState;
 import src.main.java.com.sokubastudios.alpha.commands.item.*;
 import src.main.java.com.sokubastudios.alpha.commands.misc.*;
 import src.main.java.com.sokubastudios.alpha.dialogue.NodeManager;
@@ -35,7 +35,7 @@ public class Parser {
         List<String> tokenList = new ArrayList<>();
         try {
             while (input.isEmpty()) {
-                input = Main.inputQueue.take();
+                input = GameState.inputQueue.take();
             }
 
             String[] tokens = input.split("\\s+");
@@ -60,16 +60,16 @@ public class Parser {
     }
 
     private boolean processCommand() {
-        Main.println();
+        GameState.println();
 
         if (key == null) {
-            Main.println("I don't understand your command...");
+            GameState.println("I don't understand your command...");
             return false;
         }
 
         Command command = createCommand();
         if (command == null) {
-            Main.println("I do not know what you mean...");
+            GameState.println("I do not know what you mean...");
             return false;
         }
         return command.use(argument);

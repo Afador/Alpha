@@ -3,7 +3,7 @@ package src.main.java.com.sokubastudios.alpha.dialogue;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import src.main.java.com.sokubastudios.alpha.Main;
+import src.main.java.com.sokubastudios.alpha.GameState;
 
 import java.io.FileReader;
 import java.util.*;
@@ -47,7 +47,7 @@ public class NodeManager {
                 }
             }
         } catch (Exception e) {
-            Main.println("There has been an error reading in the files from the dialogues jsons.");
+            GameState.println("There has been an error reading in the files from the dialogues jsons.");
             System.exit(51);
         }
     }
@@ -59,7 +59,7 @@ public class NodeManager {
         Node currentNode = nodeMap.get(currentNodeId);
 
         while (!Objects.equals(currentNode.getId(), "end")) {
-            Main.println(currentNode.getData());
+            GameState.println(currentNode.getData());
 
             String[] optionData = new String[currentNode.getOptions().size()];
             String[] nextNode = new String[currentNode.getOptions().size()];
@@ -69,14 +69,14 @@ public class NodeManager {
                 optionData[i] = (String) option.keySet().toArray()[0];
                 nextNode[i] = option.get(optionData[i]);
 
-                Main.println((i + 1) + ". " + optionData[i]);
+                GameState.println((i + 1) + ". " + optionData[i]);
                 i++;
             }
 
             int choice;
             while (true) {
                 try {
-                    choice = Integer.parseInt(Main.inputQueue.take());
+                    choice = Integer.parseInt(GameState.inputQueue.take());
 
                     if (0 < choice && choice < optionData.length + 1) {
                         break;
@@ -84,9 +84,9 @@ public class NodeManager {
                         throw new IndexOutOfBoundsException();
                     }
                 } catch (IndexOutOfBoundsException e) {
-                    Main.println("Not within expected parameters, you silly.");
+                    GameState.println("Not within expected parameters, you silly.");
                 } catch (Exception e) {
-                    Main.println("Something went wrong. Try again.");
+                    GameState.println("Something went wrong. Try again.");
                 }
             }
 

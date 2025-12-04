@@ -33,7 +33,7 @@ public class GameApplication extends Application {
         input.setFont(Font.font(24));
         input.setOnAction(_ -> {
             try {
-                Main.inputQueue.put(input.getText());
+                GameState.inputQueue.put(input.getText());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -50,7 +50,7 @@ public class GameApplication extends Application {
         Thread textThread = new Thread(() -> {
             try {
                 while (true) {
-                    output.appendText(Main.outputQueue.take());
+                    output.appendText(GameState.outputQueue.take());
                 }
             } catch (Exception e) {
                 System.out.println("ERROR: GA-54");

@@ -2,7 +2,7 @@ package src.main.java.com.sokubastudios.alpha.commands.item;
 
 import src.main.java.com.sokubastudios.alpha.Character;
 import src.main.java.com.sokubastudios.alpha.Item;
-import src.main.java.com.sokubastudios.alpha.Main;
+import src.main.java.com.sokubastudios.alpha.GameState;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 
 import java.util.Map;
@@ -19,9 +19,9 @@ public class InventoryCommand implements Command {
         Map<String, Item> ItemList = character.getItemList();
 
         for (String item : ItemList.keySet()) {
-            Main.println("- " + item);
+            GameState.println("- " + item);
         }
-        Main.println();
+        GameState.println();
 
         return false;
     }

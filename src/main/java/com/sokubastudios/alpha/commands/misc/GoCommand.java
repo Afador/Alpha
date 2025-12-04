@@ -1,6 +1,6 @@
 package src.main.java.com.sokubastudios.alpha.commands.misc;
 
-import src.main.java.com.sokubastudios.alpha.Main;
+import src.main.java.com.sokubastudios.alpha.GameState;
 import src.main.java.com.sokubastudios.alpha.commands.Command;
 import src.main.java.com.sokubastudios.alpha.locations.Location;
 import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
@@ -15,14 +15,14 @@ public class GoCommand implements Command {
     @Override
     public boolean use(String argument) {
         if (argument == null) {
-            Main.println("Go where?");
+            GameState.println("Go where?");
             return false;
         }
 
         Location nextLocation = LOCATION_MAP.getCurrentLocation().getExit(argument);
 
         if (nextLocation == null) {
-            Main.println("There is no door!");
+            GameState.println("There is no door!");
         } else {
             LOCATION_MAP.setCurrentLocation(nextLocation);
             LookCommand lookCommand = new LookCommand(LOCATION_MAP);

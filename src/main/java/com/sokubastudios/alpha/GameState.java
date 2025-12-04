@@ -7,8 +7,7 @@ import src.main.java.com.sokubastudios.alpha.locations.LocationMap;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
-// GameState
-public class Main {
+public class GameState {
     public static ArrayBlockingQueue<String> outputQueue = new ArrayBlockingQueue<>(1);
     public static ArrayBlockingQueue<String> inputQueue = new ArrayBlockingQueue<>(1);
 
@@ -19,14 +18,14 @@ public class Main {
     public static void main(String[] args) {
         Thread gameApplicationThread = new Thread(() -> GameApplication.main(args));
 
-        Main game = new Main();
+        GameState game = new GameState();
         Thread gameThread = new Thread(game::play);
 
         gameThread.start();
         gameApplicationThread.start();
     }
 
-    public Main() {
+    public GameState() {
         CHARACTER = new Character();
         LOCATION_MAP = new LocationMap();
         NodeManager nodeManager = new NodeManager();
@@ -55,7 +54,7 @@ public class Main {
         while (!finished) {
             finished = PARSER.getCommand();
         }
-        Main.println("Game Terminated");
+        GameState.println("Game Terminated");
     }
 
     private void printWelcome() {
