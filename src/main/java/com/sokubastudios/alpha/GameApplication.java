@@ -53,7 +53,7 @@ public class GameApplication extends Application {
                     output.appendText(GameState.outputQueue.take());
                 }
             } catch (Exception e) {
-                System.out.println("ERROR: GA-54");
+                System.out.println("ERROR: GA-56");
                 System.out.println(Arrays.toString(e.getStackTrace()));
             }
         });

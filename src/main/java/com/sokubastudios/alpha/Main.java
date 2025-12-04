@@ -1,6 +1,7 @@
 package src.main.java.com.sokubastudios.alpha;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,7 +35,8 @@ public class Main {
                 oos.writeObject(gameState);
                 GameState.println("Game Saved");
             } catch (Exception e) {
-                e.printStackTrace();
+                System.out.println("ERROR: M-38");
+                System.out.println(Arrays.toString(e.getStackTrace()));
                 GameState.println("Game Was Unable To Save");
             }
         });
