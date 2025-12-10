@@ -1,8 +1,9 @@
 package src.main.java.com.sokubastudios.alpha.commands;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class TrieNode {
+public class TrieNode implements Serializable {
     private final Map<String, TrieNode> CHILDREN = new TreeMap<>();
     private boolean isEnd = false;
 
