@@ -15,7 +15,7 @@ public class GameState implements Serializable {
     private final LocationMap LOCATION_MAP;
     private final Parser PARSER;
 
-    private boolean finished = false;
+    public boolean finished = false;
 
     public GameState() {
         NodeManager nodeManager = new NodeManager();

@@ -32,6 +32,7 @@ public class Main {
 
     private static Thread getGameThread(GameState gameState) {
         return new Thread(() -> {
+            gameState.finished = false;
             gameState.play();
 
             try {
